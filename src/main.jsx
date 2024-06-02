@@ -19,6 +19,8 @@ import {
 } from '@tanstack/react-query'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TrainerDetails from "./Pages/NavPages/AllTrainers/TrainerDetails.jsx";
+import BeTrainer from "./Pages/NavPages/AllTrainers/BeTrainer.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: '/be-trainer',
+        element: <BeTrainer/>
+      }
     ],
   },
   {

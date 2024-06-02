@@ -35,9 +35,9 @@ const Navbar = () => {
               id="WindUI"
               aria-label="WindUI logo"
               aria-current="page"
-              className="flex items-center gap-2 whitespace-nowrap py-3 text-lg focus:outline-none lg:flex-1"
+              className="flex items-center gap-2 whitespace-nowrap py-3 text-3xl focus:outline-none lg:flex-1"
             >
-              FitnessSynced
+              Fitness<sub className="text-emerald-700">Synced</sub>
             </Link>
             {/* For Small Device */}
             <button

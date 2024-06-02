@@ -1,19 +1,10 @@
 // import Select from "react-select";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import Select from "react-select";
+import { Link, useParams } from "react-router-dom";
+
 import useAxiosCommon from "../../../Hooks/useAxiosCommon";
 import TrainerInfo from "./TrainerInfo";
-const availableTimeSlots = [
-  { label: "Monday 9am-11am", value: "Monday 9am-11am" },
-  { label: "Monday 1pm-3pm", value: "Monday 1pm-3pm" },
-  { label: "Tuesday 10am-12pm", value: "Tuesday 10am-12pm" },
-  { label: "Wednesday 3pm-5pm", value: "Wednesday 3pm-5pm" },
-  { label: "Thursday 2pm-4pm", value: "Thursday 2pm-4pm" },
-  { label: "Friday 11am-1pm", value: "Friday 11am-1pm" },
-  { label: "Saturday 9am-11am", value: "Saturday 9am-11am" },
-  { label: "Sunday 12pm-2pm", value: "Sunday 12pm-2pm" },
-];
+
 const TrainerDetails = () => {
   const axiosCommon = useAxiosCommon();
   const { id } = useParams();
@@ -24,26 +15,21 @@ const TrainerDetails = () => {
       return data;
     },
   });
+  
   console.log(trainer);
   return (
     <div>
       Trainer DEtails
       <div>
         <h1>Trainer Schedule</h1>
-        <div className="flex ">
-            <div className="flex-1 border-4">
+        <div >
             <TrainerInfo trainer={trainer}/>
-            </div>
-            <div className="flex-1 border-4">
-
-            </div>
         </div>
-        <Select
-          options={availableTimeSlots}
-          isMulti
-          closeMenuOnSelect={false}
-          placeholder="Select time slots..."
-        />
+       <div className="my-12">
+       <Link to='/be-trainer' className="my-12">
+            <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-100 px-5 text-sm font-medium tracking-wide text-emerald-600 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-900 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-100 disabled:text-emerald-400 disabled:shadow-none">Be A Trainer</button>
+        </Link>
+       </div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ const AllTrainer = () => {
 
     return (
         <div>
-           <div className="grid grid-cols-2 gap-6">
+           <div className="grid grid-cols-2 gap-12">
             {
                 trainers.map(trainer => <SingleTrainer 
                     key={trainer._id}
