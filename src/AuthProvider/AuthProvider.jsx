@@ -1,22 +1,28 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
-    GithubAuthProvider,
-    GoogleAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 import auth from "../Firebase/Firebase.config";
+import axios from "axios";
+import useAxiosCommon from "../Hooks/useAxiosCommon";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const axiosCommon = useAxiosCommon();
   const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState('');
+  const [userImage, setUserImage] = useState('');
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
@@ -26,39 +32,97 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleLogin = () => {
-    setLoading(true)
-    return signInWithPopup(auth, googleProvider)
-  }
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
   const githubLogin = () => {
     setLoading(true);
-    return signInWithPopup(auth, githubProvider)
-  }
+    return signInWithPopup(auth, githubProvider);
+  };
 
   const login = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const updateUserProfile = (name, img_url) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: img_url,
+    });
+  };
 
   const logOut = () => {
     setLoading(true);
-    return signOut(auth)
-  }
-    
- 
+    return signOut(auth);
+  };
+
+  const fun = (x, y) => {
+    setUserName(x);
+    setUserImage(y);
+    // console.log(x, y);
+  };
+
+  const saveUser = async (currentUser) => {
+    // if(!currentUser?.displayName ){
+    //   console.log('Not name');
+    //   return;
+    // }
+    const newUser = {
+      email: currentUser?.email,
+      name:  currentUser?.displayName || userName,
+      image:  currentUser?.photoURL || userImage,
+      role: "member",
+      status: "verified",
+      time: Date.now(),
+    };
+    console.log(newUser);
+    const { data } = await axios.put(
+      `${import.meta.env.VITE_API_URL}/user`,
+      newUser
+    );
+    console.log(data);
+  };
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unSubscribe = onAuthStateChanged(auth,async (currentUser) => {
       setLoading(false);
       setUser(currentUser);
+      console.log(currentUser);
+      if (currentUser) {
+        saveUser(currentUser);
+        const { data } = await axiosCommon.post('/jwt', currentUser.email)
+        console.log(data);
+        if(data.token){
+          localStorage.setItem('access-token', data.token)
+        }
+        // console.log('CUrrent User', currentUser);
+      }else{
+        localStorage.removeItem('access-token')
+      }
     });
 
     return () => {
       return unSubscribe();
     };
-  }, []);
+  }, [user]);
 
-  const authInfo = { user, loading, register, login, logOut, googleLogin, githubLogin };
+  const authInfo = {
+    user,
+    loading,
+    setLoading,
+    register,
+    login,
+    logOut,
+    googleLogin,
+    githubLogin,
+    updateUserProfile,
+    setUserName,
+    setUserImage,
+    fun,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

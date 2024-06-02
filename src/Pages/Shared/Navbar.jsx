@@ -2,9 +2,25 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import Button from "./Button";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const handleLogOut = () => {
+    
+    logOut().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Logged Out!!!",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    });
+  };
   return (
     <>
       <header className=" mb-12 border-b-1 relative z-20 w-full border-b border-slate-200 bg-white/90 shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
@@ -94,17 +110,48 @@ const Navbar = () => {
                   <span>Community</span>
                 </NavLink>
               </li>
+              {user && (
+                <li role="none" className="flex lg:px-4 py-4 items-stretch">
+                  <NavLink
+                    to="/dashboard"
+                    className="flex items-center gap-2  transition-colors duration-300 rounded-lg  focus:outline-none focus-visible:outline-none px-3"
+                  >
+                    <span>DashBoard</span>
+                  </NavLink>
+                </li>
+              )}
             </ul>
 
             {/*      <!-- Actions --> */}
             <div className="ml-auto flex items-center gap-4 justify-end px-6 lg:ml-0 lg:flex-1 lg:p-0">
-              <Link to='/login'>
-              <Button text="Login" />
-              </Link>
-              <Link to='/register'>
-              <Button text='Register' />
-              </Link>
-              
+              {user ? (
+                <>
+                  <div className="flex  flex-col items-center justify-center">
+                    <div className="flex space-x-5">
+                      <img
+                        alt="Photo"
+                        className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-gray-300 dark:ring-offset-gray-100"
+                        src={user?.photoURL}
+                      />
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleLogOut}
+                    className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide  transition duration-300 rounded focus-visible:outline-none whitespace-nowrap  disabled:shadow-none bg-emerald-600 text-white"
+                  >
+                    Log Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <Button text="Login" />
+                  </Link>
+                  <Link to="/register">
+                    <Button text="Register" />
+                  </Link>
+                </>
+              )}
             </div>
           </nav>
         </div>

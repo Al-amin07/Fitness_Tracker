@@ -1,10 +1,67 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
-   
+
+  const { login, githubLogin, googleLogin } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  const path = location?.state || '/';
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then(result => {
+      console.log(result.user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "SuccessFully Login!!!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate(path);
+    })
+  }
+
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then(result => {
+      console.log(result.user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "SuccessFully Login!!!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate(path);
+    })
+  }
+
+   const handleLogin = e => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    login(email, password)
+    .then(result => {
+      console.log(result.user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "SuccessFully Login!!!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate(path);
+    })
+   }
     
   return (
     <div className="w-full mx-auto  max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
@@ -22,6 +79,7 @@ const Login = () => {
       </p>
       <div className="my-6 space-y-4">
         <button
+        onClick={handleGoogleLogin}
           aria-label="Login with Google"
           type="button"
           className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
@@ -36,6 +94,7 @@ const Login = () => {
           <p>Login with Google</p>
         </button>
         <button
+        onClick={handleGithubLogin}
           aria-label="Login with GitHub"
           role="button"
           className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
@@ -56,7 +115,8 @@ const Login = () => {
         <p className="px-3 dark:text-gray-600">OR</p>
         <hr className="w-full dark:text-gray-600" />
       </div>
-      <form  className="space-y-8">
+  
+      <form onSubmit={handleLogin}  className="space-y-8">
         <div className="space-y-4">
           <div className="space-y-2">
             <label htmlFor="email" className="block text-sm">
@@ -93,7 +153,8 @@ const Login = () => {
           </div>
         </div>
         <button
-          type="button"
+        
+          type="submit"
           className="w-full px-8 py-3 font-semibold rounded-md bg-emerald-600  text-white"
         >
           Sign in
