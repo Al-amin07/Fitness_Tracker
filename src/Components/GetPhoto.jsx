@@ -10,7 +10,7 @@ const GetPhoto = async(photo) => {
         `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB}`,
         formData
       );
-      return data;
+      return data.data.display_url;
 
 };
 

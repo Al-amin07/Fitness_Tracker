@@ -61,6 +61,15 @@ const Login = () => {
       });
       navigate(path);
     })
+   .catch(error => {
+    Swal.fire({
+      position: "top-end",
+      icon: "warning",
+      title: `${error.message}`,
+      showConfirmButton: false,
+      timer: 1500
+    });
+   })
    }
     
   return (

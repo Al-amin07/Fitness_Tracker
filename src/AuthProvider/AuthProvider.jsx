@@ -66,10 +66,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const saveUser = async (currentUser) => {
-    // if(!currentUser?.displayName ){
-    //   console.log('Not name');
-    //   return;
-    // }
+ 
     const newUser = {
       email: currentUser?.email,
       name:  currentUser?.displayName || userName,

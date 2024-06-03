@@ -20,6 +20,10 @@ import {
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TrainerDetails from "./Pages/NavPages/AllTrainers/TrainerDetails.jsx";
 import BeTrainer from "./Pages/NavPages/AllTrainers/BeTrainer.jsx";
+import AllNewsLetter from "./DashBoard/Admin/AdminPage/AllNewsLetter.jsx";
+import AllTrainerss from "./DashBoard/Admin/AdminPage/AllTrainerss.jsx";
+import AppliedTrainer from "./DashBoard/Admin/AdminPage/AppliedTrainer.jsx";
+import AddNewClass from "./DashBoard/Admin/AdminPage/AddNewClass.jsx";
 
 
 const router = createBrowserRouter([
@@ -65,7 +69,30 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <PrivateRoute><DashBoard/></PrivateRoute>
+    element: <PrivateRoute><DashBoard/></PrivateRoute>,
+    children: [
+      // Admin Page
+      {
+        path: 'all-news-letter',
+        element: <AllNewsLetter/>
+      },
+      {
+        path: 'all-trainers',
+        element: <AllTrainerss/>
+      },
+      {
+        path: 'applied-trainer',
+        element: <AppliedTrainer/>
+      },
+      {
+        path: 'add-new-class',
+        element: <AddNewClass/>
+      },
+      {
+        path: 'balance',
+        element: <AllNewsLetter/>
+      },
+    ]
   }
 ]);
 
