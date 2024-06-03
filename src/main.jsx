@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import Main from './Layout/Main.jsx'
 import AllTrainer from './Pages/NavPages/AllTrainers/AllTrainer.jsx'
-import AllClass from './Pages/NavPages/AllClass.jsx'
+import AllClass from './Pages/NavPages/AllClass/AllClass.jsx'
 import Community from './Pages/NavPages/Community.jsx'
 import Login from './Pages/Authentication/Login.jsx'
 import Register from './Pages/Authentication/Register.jsx'

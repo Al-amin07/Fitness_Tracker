@@ -1,21 +1,26 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosCommon from "../../../Hooks/useAxiosCommon";
+
+import useAllClass from "../../../Hooks/useAllClass";
+import Loading from "../../../Loading/Loading";
+import SingleClass from "./SingleClass";
 
 
 const AllClass = () => {
-    const axiosCommon = useAxiosCommon();
-    const { data: classes = [] } = useQuery({
-        queryKey: ['class'],
-        queryFn: async() => {
-            const { data } = await axiosCommon.get('/classess');
-           return data
-
-        }
-    })
+  
+    const [classes, ,isLoading] = useAllClass();
     console.log(classes);
+    if(isLoading) return <Loading/>
     return (
         <div>
-            
+            <h2 className="text-3xl font-medium text-slate-500 text-center mb-12">See Our Latest Classes</h2>
+            <div className="grid grid-cols-2 gap-12">
+             
+                {
+                    classes.map(item => <SingleClass 
+                        key={item._id}
+                        item={item}
+                        />)
+                }
+            </div>
         </div>
     );
 };

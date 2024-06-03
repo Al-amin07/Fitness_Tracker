@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
@@ -6,9 +6,10 @@ import auth from "../../Firebase/Firebase.config";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GetPhoto from "../../Components/GetPhoto";
 
 const Register = () => {
-  const { register, setLoading,  fun, setUserName, setUserImage } = useAuth();
+  const { register, setLoading,   saveUser, logOut } = useAuth();
 
   const navigate = useNavigate();
 
@@ -33,28 +34,29 @@ const Register = () => {
       toast("Pass Must be 6 Char");
       return;
     }
-    const formData = new FormData();
-    formData.append("image", photo);
+    // const formData = new FormData();
+    // formData.append("image", photo);
   
     try {
   
-      const { data } = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB}`,
-        formData
-      );
-      console.log(data.data.display_url);
+      // const { data } = await axios.post(
+      //   `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB}`,
+      //   formData
+      // );
+      const image = await GetPhoto(photo)
+      console.log(image);
      
       // fun(name, data.data.display_url);
 
-      setUserName(name);
-      setUserImage(data.data.display_url);
+    
       register(email, password).then((result) => {
         updateProfile(auth.currentUser, {
           displayName: name,
-          photoURL: data.data.display_url,
+          photoURL: image,
         })
           .then(() => {
-            
+            console.log(result.user);
+            saveUser(result.user)
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -62,26 +64,16 @@ const Register = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-            // navigate("/");
+            logOut()
+            navigate("/login");
           })
           .catch((error) => {
             console.log(error);
           });
-       console.log(result.user);
+       
       });
 
-      // const result = await register(email, password)
-      // console.log(result.user);
-      // await updateProfile(auth.currentUser,{
-      //   displayName: name, photoURL: data.data.display_url
-      // })
-      // Swal.fire({
-      //       position: "top-end",
-      //       icon: "success",
-      //       title: "SuccessFully Register!!!",
-      //       showConfirmButton: false,
-      //       timer: 1500,
-      //     });
+      
       
     } catch (err) {
       console.log(err);

@@ -10,7 +10,7 @@ const DashBoard = () => {
       <div>
         <Sidebar/>
       </div>
-      <div className="md: ml-[20px] lg:ml-[350px]  mt-16 w-full pr-24">
+      <div className="md: ml-[20px] lg:ml-[350px] mt-16 w-full pr-24">
         <Outlet/>
       </div>
     </div>

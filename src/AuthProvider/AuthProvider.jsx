@@ -66,17 +66,17 @@ const AuthProvider = ({ children }) => {
   };
 
   const saveUser = async (currentUser) => {
- 
+    console.log(currentUser);
     const newUser = {
       email: currentUser?.email,
-      name:  currentUser?.displayName || userName,
-      image:  currentUser?.photoURL || userImage,
+      name:  currentUser?.displayName,
+      image:  currentUser?.photoURL ,
       role: "member",
       status: "verified",
       time: Date.now(),
     };
     console.log(newUser);
-    const { data } = await axios.put(
+    const { data } = await axios.post(
       `${import.meta.env.VITE_API_URL}/user`,
       newUser
     );
@@ -89,9 +89,11 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
       if (currentUser) {
-        saveUser(currentUser);
-        const { data } = await axiosCommon.post('/jwt', currentUser.email)
-        console.log(data);
+        // saveUser(currentUser);
+        const email = currentUser?.email;
+        console.log(email);
+        const { data } = await axiosCommon.post('/jwt', {email})
+        // console.log(data);
         if(data.token){
           localStorage.setItem('access-token', data.token)
         }
@@ -104,7 +106,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unSubscribe();
     };
-  }, [user]);
+  }, [user, axiosCommon]);
 
   const authInfo = {
     user,
@@ -119,6 +121,7 @@ const AuthProvider = ({ children }) => {
     setUserName,
     setUserImage,
     fun,
+    saveUser
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
