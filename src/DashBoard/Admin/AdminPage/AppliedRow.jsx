@@ -15,7 +15,7 @@ const AppliedRow = ({  item , refetch}) => {
  
     const modalHandler = async () => {
         const {status,_id, ...newItem} = item;
-        console.log(newItem); 
+        console.log(status); 
         const { data: trainer } = await axiosSecure.post('/trainers', newItem);
         console.log(trainer);
         const { data: applied } =  await axiosSecure.delete(`/applied-trainers/${_id}`)

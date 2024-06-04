@@ -63,7 +63,7 @@ const DetailsModal = ({ closeModal, isOpen, modalHandler, item }) => {
                  <p className="text-slate-600 my-3">{details}</p>
                 <div>
                     <h2>Experience : {years_of_experience}</h2>
-                    <h2 className="">Skill in : {skills.map((item, index) => <span className="mr-3 text-lg font-medium" key={index}>{item}</span>)}</h2>
+                    <h2 className="">Skill in : {skills?.map((item, index) => <span className="mr-3 text-lg font-medium" key={index}>{item}</span>)}</h2>
                     <p className="text-lg font-medium mt-3 mb-2">Available selected Slot : </p>
                      <ul>
                     {available_slot.map((item, ind) => <li key={ind}>{item}</li>)}

@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
-import AppliedRow from "./AppliedRow";
+import AppliedRow from "./AppliedRow"
+import Loading from '../../../Loading/Loading'
 
 const AppliedTrainer = () => {
    
@@ -16,7 +17,7 @@ const AppliedTrainer = () => {
     })
 
     
-    console.log(appliedTrainers);
+    if(isLoading) return <Loading/>
     return (
         <div>
             <table className="min-w-full leading-normal">
@@ -58,7 +59,7 @@ const AppliedTrainer = () => {
         </thead>
         <tbody>
             {
-                appliedTrainers.map(item => <AppliedRow 
+                appliedTrainers?.map(item => <AppliedRow 
                     key={item._id} 
                     item={item}
                     refetch={refetch}

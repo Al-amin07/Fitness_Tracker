@@ -14,6 +14,7 @@ const TrainerInfo = ({ trainer }) => {
     Education,
     details,
   } = trainer;
+  
   return (
     //  <div className='flex gap-6'>
     //   <div className="flex flex-1 flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
@@ -84,8 +85,8 @@ const TrainerInfo = ({ trainer }) => {
             </p>
           </div>
         </div>
-
-        <div className="p-6">
+    {/* <hr  className="my-5 px-6"/> */}
+        <div className="p-6 border-t-2">
           <header className="mb-2">
             <p className="text-slate-400">{details}</p>
             <div className="flex justify-between items-center my-3">
@@ -120,7 +121,7 @@ const TrainerInfo = ({ trainer }) => {
         </h2>
         <div className="grid grid-cols-3 gap-5">
           {available_slot?.map((item, ind) => (
-            <Link to={`/trainer-booking/${trainer._id}?index=${ind}`}  key={ind}>
+            <Link to={`/trainer-booking/${trainer._id}?slot=${available_slot[ind]}`}  key={ind}>
             <button
             
           

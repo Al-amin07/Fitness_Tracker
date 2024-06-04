@@ -1,7 +1,6 @@
 
 .table tr, th ,td {
-     border: 1px solid black;
-     /* padding-top: 10px;
-     padding-bottom: 10px; */
+     border: 1px solid ;
+     background: #EFEFEF66;
      padding: 10px ;
 }
