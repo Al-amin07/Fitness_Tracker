@@ -25,6 +25,7 @@ import AllTrainerss from "./DashBoard/Admin/AdminPage/AllTrainerss.jsx";
 import AppliedTrainer from "./DashBoard/Admin/AdminPage/AppliedTrainer.jsx";
 import AddNewClass from "./DashBoard/Admin/AdminPage/AddNewClass.jsx";
 import TrainerBooking from "./Pages/NavPages/AllTrainers/TrainerBooking.jsx";
+import Payment from "./Pages/NavPages/AllTrainers/Payment.jsx";
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/be-trainer',
         element: <PrivateRoute><BeTrainer/></PrivateRoute>
+      },
+      {
+        path: '/payment/:id',
+        element: <PrivateRoute><Payment/></PrivateRoute>
       },
       {
         path: '/trainer-booking/:id',
