@@ -8,6 +8,7 @@ import TrainerInfo from "./TrainerInfo";
 const TrainerDetails = () => {
   const axiosCommon = useAxiosCommon();
   const { id } = useParams();
+  console.log(id);
   const { data: trainer = {} } = useQuery({
     queryKey: ["trainer", id],
     queryFn: async () => {
@@ -19,7 +20,7 @@ const TrainerDetails = () => {
   console.log(trainer);
   return (
     <div>
-      Trainer DEtails
+   
       <div>
         <h1>Trainer Schedule</h1>
         <div >

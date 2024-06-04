@@ -36,7 +36,7 @@ const AllTrainerss = () => {
   }
   return (
     <div className="w-full overflow-x-auto">
-    
+    <h2 className="text-3xl font-medium text-center mb-8 text-slate-500">All Trainers Details</h2>
       <table className="min-w-full leading-normal">
         <thead >
           <tr >

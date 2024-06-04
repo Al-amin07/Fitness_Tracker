@@ -21,8 +21,8 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const axiosCommon = useAxiosCommon();
   const [loading, setLoading] = useState(true);
-  const [userName, setUserName] = useState('');
-  const [userImage, setUserImage] = useState('');
+  // const [userName, setUserName] = useState('');
+  // const [userImage, setUserImage] = useState('');
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
@@ -59,11 +59,6 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const fun = (x, y) => {
-    setUserName(x);
-    setUserImage(y);
-    // console.log(x, y);
-  };
 
   const saveUser = async (currentUser) => {
     console.log(currentUser);
@@ -89,15 +84,15 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
       if (currentUser) {
-        // saveUser(currentUser);
+ 
         const email = currentUser?.email;
-        console.log(email);
+        console.log(email); 
         const { data } = await axiosCommon.post('/jwt', {email})
-        // console.log(data);
+       
         if(data.token){
           localStorage.setItem('access-token', data.token)
         }
-        // console.log('CUrrent User', currentUser);
+        
       }else{
         localStorage.removeItem('access-token')
       }
@@ -118,9 +113,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     githubLogin,
     updateUserProfile,
-    setUserName,
-    setUserImage,
-    fun,
+  
     saveUser
   };
   return (
