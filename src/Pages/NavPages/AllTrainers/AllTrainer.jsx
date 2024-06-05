@@ -3,12 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../../Hooks/useAxiosCommon";
 import SingleTrainer from "./SingleTrainer";
 import useAllTrainer from "../../../Hooks/useAllTrainer";
+import Loading from "../../../Loading/Loading";
 
 
 
 const AllTrainer = () => {
-    const [trainers] = useAllTrainer()
+    const [trainers,, isLoading] = useAllTrainer()
     console.log(trainers);
+if(isLoading) return <Loading/>
 
     return (
         <div>

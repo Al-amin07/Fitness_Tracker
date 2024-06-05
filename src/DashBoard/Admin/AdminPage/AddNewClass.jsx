@@ -2,32 +2,54 @@ import { useState } from "react";
 import GetPhoto from "../../../Components/GetPhoto";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-
+import useAllTrainer from "../../../Hooks/useAllTrainer";
+import Select from "react-select";
+import SketLoading from "../../../Loading/SketLoading";
+import Loading from "../../../Loading/Loading";
 const AddNewClass = () => {
     const [seleced, setSelected] = useState('beginner');
+    const [selectedValues, setSelectedValues] = useState([]);
+    const [trainerSelected, setTrainerSelected] = useState();
     const axiosSecure = useAxiosSecure();
+    const [trainers, ,isLoading] = useAllTrainer();
+    const newTrainer = trainers.map(trainer => ({
+      value: trainer.full_name,
+      label: trainer.full_name,
+      image: trainer.profile_image,
+      id: trainer._id,
+    }));
+    console.log(newTrainer);
     const handleSelect = e => {
         console.log(e.target.value);
         setSelected(e.target.value)
     }
+
+    const handleSelectChange = (selectedOptions) => {
+      if(selectedValues.length > 5){
+        alert('Cannot select more than 5 Trainers')
+        return;
+      }
+      setSelectedValues(selectedOptions);
+      console.log(selectedOptions);
+    };
 
     const handleSubmit =async e => {
         e.preventDefault();
         const form = e.target;
         const className = form.name.value;
         const level = seleced;
-        const duration = form.duration.value;
+        // const duration = form.duration.value;
         const details = form.details.value;
         const image = form.image.files[0];
         const photo = await GetPhoto(image)
-        console.log(className, level, duration, details, photo);
+        console.log(className, level,  details, photo);
         const classDetails = {
             className,
             level,
-            duration,
+            
             details,
             photo,
-            teachers: []
+            teachers: selectedValues
         }
         // console.log(classDetails);
         try{
@@ -49,6 +71,8 @@ const AddNewClass = () => {
 
         
     }
+
+    if(isLoading) return <Loading/>
 
   return (
     <div className="">
@@ -107,21 +131,18 @@ const AddNewClass = () => {
                     <option  value="advanced">Advanced</option>
                 </select>
             </div>
-            <div className="flex flex-col col-span-full sm:col-span-3">
-              <label
-               
-                className="text-lg font-medium text-slate-600 "
-              >
-               Duration
-              </label>
-              <input
-                className="border  py-3 px-2 "
-                type="text"
-                name="duration"
-                id=""
-                required
-              />
-            </div>
+            <div className=" col-span-full sm:col-span-3">
+            <label className="text-lg font-medium text-slate-600 ">
+              Available Trainers
+            </label>
+            <Select
+              onChange={handleSelectChange}
+              className="border-2 "
+              closeMenuOnSelect={false}
+              isMulti
+              options={newTrainer}
+            />
+          </div>
 
          <div className="flex flex-col col-span-full sm:col-span-6">
          <label

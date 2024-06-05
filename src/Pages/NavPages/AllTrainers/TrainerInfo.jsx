@@ -85,7 +85,7 @@ const TrainerInfo = ({ trainer }) => {
             </p>
           </div>
         </div>
-    {/* <hr  className="my-5 px-6"/> */}
+    
         <div className="p-6 border-t-2">
           <header className="mb-2">
             <p className="text-slate-400">{details}</p>
