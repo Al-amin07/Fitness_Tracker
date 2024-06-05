@@ -1,0 +1,42 @@
+import useAllTrainer from "../../Hooks/useAllTrainer";
+import Loading from "../../Loading/Loading";
+
+
+const Team = () => {
+    const [trainers, ,isLoading] = useAllTrainer()
+    if(isLoading) return <Loading/>
+    return (
+        <div>
+            <h2 className="text-5xl font-bold text-center">Our Top Trainers </h2>
+            <div className="grid grid-cols-3 gap-5 mt-8">
+                {
+                    trainers?.slice(0,3).map(item =>  <div key={item._id} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+                    {/*  <!-- Image --> */}
+                    <figure>
+                      <img
+                        src={item.profile_image}
+                        alt="card image"
+                        className="aspect-video w-full"
+                      />
+                    </figure>
+                    {/*  <!-- Body--> */}
+                    <div className="p-6">
+                      <header className="mb-4">
+                        <h3 className="text-xl font-medium text-slate-700">
+                     {item?.full_name}
+                        </h3>
+                       
+                      </header>
+                      <p>
+                      I’m {item?.full_name}, a certified fitness trainer with over 10 years of experience in helping individuals achieve their fitness goals. My passion for fitness began in high school when I joined the track team, and it has been a significant part of my life ever since. 
+                      </p>
+                      <p className="text-black mt-2">Expert at : {item?.skills.map((skill, index) => <span className="font-semibold mr-2" key={index}>{skill}</span>)}</p>
+                    </div>
+                  </div>)
+                }
+            </div>
+        </div>
+    );
+};
+
+export default Team;
