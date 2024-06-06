@@ -13,8 +13,10 @@ const Subscription = () => {
         console.log(name, email);
         const subUser = {
             name,
-            email
+            email,
+            time: new Date().toLocaleDateString()
         }
+        console.log(subUser);
         const { data } = await axiosCommon.post('/subscription', subUser);
         console.log(data);
         if(data.insertedId){

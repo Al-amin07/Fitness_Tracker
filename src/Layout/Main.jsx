@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-7xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto  mb-16">
         <Outlet/>
       </div>
       <Footer/>
