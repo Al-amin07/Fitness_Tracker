@@ -57,7 +57,7 @@ const Subscription = () => {
                 placeholder="Your Email"
                 className="peer order-2 text-bg px-4 w-full py-[13px] border rounded-l-full"
               />
-              <button className="inline-flex rounded-r-full h-12 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-6 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none peer-disabled:cursor-not-allowed peer-disabled:border-emerald-300 peer-disabled:bg-emerald-300">
+              <button className="inline-flex rounded-r-full h-12 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded bg-cyan-500 px-6 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-cyan-600 focus:bg-cyan-700 focus-visible:outline-none peer-disabled:cursor-not-allowed peer-disabled:border-cyan-300 peer-disabled:bg-cyan-300">
                 
                 Subscribe
               </button>

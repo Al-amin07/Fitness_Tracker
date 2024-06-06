@@ -17,14 +17,14 @@ const SingleTrainer = ({trainer}) => {
           />
         </figure>
       
-        <div className="flex-1 p-3 sm:mx-6 sm:px-0">
+        <div className="flex-1 p-4 sm:mx-6 sm:px-0">
           <header className="flex gap-4 mb-4">
            
             <div>
               <h3 className="text-2xl font-medium text-slate-700">
                {full_name}
               </h3>
-              <p className="text-sm text-slate-400">{details}</p>
+              {/* <p className="text-sm text-slate-400">{details}</p> */}
             </div>
           </header>
         
@@ -51,7 +51,7 @@ const SingleTrainer = ({trainer}) => {
           </div>
           <div>
           <Link to={`/trainer-details/${trainer._id}`} className="flex justify-end gap-2  pt-0">
-     <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-600 text-white px-5 text-sm font-medium tracking-wide ">
+     <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-600 text-white px-5 text-sm font-medium tracking-wide ">
          <span className="order-2">Know More</span>
          <span className="relative only:-mx-5">
            <svg

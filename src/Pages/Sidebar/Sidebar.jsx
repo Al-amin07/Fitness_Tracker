@@ -50,8 +50,8 @@ const Sidebar = () => {
             isSideNavOpen ? "translate-x-0" : " -translate-x-full"
           }`}
         >
-          <Link to="/" className="text-3xl font-medium mx-auto mt-5">
-            Fitness<sup className="text-emerald-700">Synced</sup>
+          <Link to="/" className="text-2xl font-bold mx-auto mt-5">
+            Fitness<sup className="text-cyan-700">Synced</sup>
           </Link>
           <nav
             aria-label="side navigation"
@@ -60,7 +60,7 @@ const Sidebar = () => {
             <div>
               <ul className="flex flex-1 flex-col gap-1 py-3">
                 <li className="px-3">
-                  <Link className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
+                  <Link className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 ">
                     <div className="flex items-center self-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const Sidebar = () => {
                   <Link
                     to="/"
                     href="#"
-                    className="flex border-2 items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                    className="flex border-2 items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
                   >
                     <div className="flex items-center self-center">
                       <svg
@@ -123,7 +123,7 @@ const Sidebar = () => {
                 <li className="px-3">
                   <a
                     href="#"
-                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
                   >
                     <div className="flex items-center self-center ">
                       <svg
@@ -156,7 +156,7 @@ const Sidebar = () => {
                 <li className="px-3">
                   <a
                     href="#"
-                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
                   >
                     <div className="flex items-center self-center ">
                       <svg
@@ -187,7 +187,7 @@ const Sidebar = () => {
           <footer className="border-t border-slate-200 p-3">
             <a
               href="#"
-              className="flex items-center gap-3 rounded p-3 text-slate-900 transition-colors hover:text-emerald-500 "
+              className="flex items-center gap-3 rounded p-3 text-slate-900 transition-colors hover:text-cyan-500 "
             >
               <div className="flex items-center self-center ">
                 <svg

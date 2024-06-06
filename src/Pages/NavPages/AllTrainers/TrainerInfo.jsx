@@ -44,7 +44,7 @@ const TrainerInfo = ({ trainer }) => {
     //       <h2 className='text-lg font-medium'>Education : </h2>
     //       <ul className='list-disc list-inside space-y-2'>
     //           {
-    //               Education?.slice(0,2)?.map((skill, ind) => <li className='text-emerald-700' key={ind+1}>{skill}</li>)
+    //               Education?.slice(0,2)?.map((skill, ind) => <li className='text-cyan-700' key={ind+1}>{skill}</li>)
     //           }
     //       </ul>
     //     </div>
@@ -52,7 +52,7 @@ const TrainerInfo = ({ trainer }) => {
     //       <h2 className='text-lg font-medium'>Skills in : </h2>
     //       <ul className='list-[upper-roman] list-inside'>
     //           {
-    //               skills?.map((skill, ind) => <li className='text-emerald-700' key={ind+1}>{skill}</li>)
+    //               skills?.map((skill, ind) => <li className='text-cyan-700' key={ind+1}>{skill}</li>)
     //           }
     //       </ul>
     //     </div>
@@ -116,7 +116,7 @@ const TrainerInfo = ({ trainer }) => {
       </div>
       <div className=" flex-1 border rounded-2xl p-6">
         <h2 className="text-3xl font-semibold mb-6">Click on the slot for booking</h2>
-        <h2 className="text-2xl font-semibold  mb-3 text-emerald-700">
+        <h2 className="text-2xl font-semibold  mb-3 text-cyan-700">
           Available Slot : {" "}
         </h2>
         <div className="grid grid-cols-3 gap-5">
@@ -125,7 +125,7 @@ const TrainerInfo = ({ trainer }) => {
             <button
             
           
-            className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-100 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-100 disabled:text-emerald-400 disabled:shadow-none"
+            className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-100 px-5 text-sm font-medium tracking-wide text-cyan-500 transition duration-300 hover:bg-cyan-100 hover:text-cyan-600 focus:bg-cyan-200 focus:text-cyan-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-cyan-300 disabled:bg-cyan-100 disabled:text-cyan-400 disabled:shadow-none"
           >
             {item}
           </button>

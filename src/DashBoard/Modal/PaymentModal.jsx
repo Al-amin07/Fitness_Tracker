@@ -15,7 +15,7 @@ import CheckoutForm from "../../Pages/NavPages/AllTrainers/CheckoutForm";
 const PaymentModal = ({
   closeModal,
   isOpen,
-  
+  classes,
   trainer,
   slot,
   pack,
@@ -43,7 +43,7 @@ const PaymentModal = ({
     price = 100;
   }
 
-//   console.log(price);
+  console.log(classes);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -81,7 +81,8 @@ const PaymentModal = ({
                       </h3>
                       <p className="text-slate-700">Slot : {slot}</p>
                       <p className="text-slate-700">Package : {pack}</p>
-                      <p className=" text-2xl text-emerald-700">
+                      <p className="text-slate-700">Class : {classes}</p>
+                      <p className=" text-2xl text-cyan-700">
                         Price : ${price}
                       </p>
                     </div>
@@ -101,7 +102,7 @@ const PaymentModal = ({
                 <Elements  stripe={stripePromise}>
                   <CheckoutForm 
                   closeModal={closeModal} 
-                  
+                  classes={classes}
                   price={price}/>
                 </Elements>
                
@@ -121,6 +122,7 @@ PaymentModal.propTypes = {
   trainer: PropTypes.object,
   slot: PropTypes.string,
   pack: PropTypes.string,
+  classes: PropTypes.string,
 
   isOpen: PropTypes.bool,
 };

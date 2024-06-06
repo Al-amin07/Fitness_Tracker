@@ -81,7 +81,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="w-full bg-emerald-50 mx-auto border max-w-md p-8 space-y-3 rounded-xl ">
+    <div className="w-full bg-cyan-50 mx-auto border max-w-md p-8 space-y-3 rounded-xl ">
       <h1 className="text-2xl font-bold text-center">Register Now!!!</h1>
       <form onSubmit={handleRegister} className="space-y-6">
         <div className="space-y-1 text-sm">
@@ -134,7 +134,7 @@ const Register = () => {
             className="w-full px-4 py-3 rounded-md  border"
           />
         </div>
-        <button className="block w-full p-3 text-center rounded-sm bg-emerald-600 text-white">
+        <button className="block w-full p-3 text-center rounded-sm bg-cyan-600 text-white">
           Sign in
         </button>
       </form>
@@ -178,7 +178,7 @@ const Register = () => {
         Already have an account?
         <Link
           to="/login"
-          className="underline dark:text-gray-800 hover:text-emerald-600"
+          className="underline dark:text-gray-800 hover:text-cyan-600"
         >
           Login
         </Link>

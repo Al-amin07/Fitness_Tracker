@@ -80,7 +80,7 @@ const Banner = () => {
       repeat={Infinity}
     />
         <p className="w-1/2 text-white">Join the journey to a healthier you with our advanced fitness tracker. Monitor your progress, set goals, and achieve more every day!Discover a new way to stay fit with our innovative fitness tracker. Seamlessly track, analyze, and improve your performance every day</p>
-        <Link to='/all-class' className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</Link>
+        <Link to='/all-class' className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</Link>
     </div>
   </SwiperSlide>
   <SwiperSlide>
@@ -104,7 +104,7 @@ const Banner = () => {
       repeat={Infinity}
     />
         <p className=" text-white">Join the journey to a healthier you with our advanced fitness tracker. Monitor your progress, set goals, and achieve more every day! Discover a new way to stay fit with our innovative fitness tracker. Seamlessly track, analyze, and improve your performance every day</p>
-        <Link to='/all-class' className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</Link>
+        <Link to='/all-class' className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</Link>
     </div>
   </SwiperSlide>
   <SwiperSlide>
@@ -129,7 +129,7 @@ const Banner = () => {
       repeat={Infinity}
     />
         <p className="w-1/2 text-white">Join the journey to a healthier you with our advanced fitness tracker. Monitor your progress, set goals, and achieve more every day!Discover a new way to stay fit with our innovative fitness tracker. Seamlessly track, analyze, and improve your performance every day</p>
-        <Link to='/all-class' className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</Link>
+        <Link to='/all-class' className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</Link>
     </div>
   </SwiperSlide>
   {/* <SwiperSlide>
@@ -137,7 +137,7 @@ const Banner = () => {
     <div className=" absolute left-[500px] text-right  top-[200px] mr-20 z-20 space-y-5 ">
         <h2 className="text-5xl font-semibold text-white">Track Your Way to Fitness</h2>
         <p className=" text-white">Join the journey to a healthier you with our advanced fitness tracker. Monitor your progress, set goals, and achieve more every day! Discover a new way to stay fit with our innovative fitness tracker. Seamlessly track, analyze, and improve your performance every day</p>
-        <button className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</button>
+        <button className="inline-flex h-10  flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-600 text-white px-5 text-sm font-medium tracking-wide">See Our Classess</button>
     </div>
   </SwiperSlide> */}
   {/* <SwiperSlide>

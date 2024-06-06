@@ -92,10 +92,10 @@ const AllTrainerss = () => {
                    
                     </td>
                     <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                      <button onClick={() => handleDelete(item._id, item.email)}  className='relative cursor-pointer inline-block px-4 py-3 font-semibold text-emerald-800 leading-tight'>
+                      <button onClick={() => handleDelete(item._id, item.email)}  className='relative cursor-pointer inline-block px-4 py-3 font-semibold text-cyan-800 leading-tight'>
                         <span
                           aria-hidden='true'
-                          className='absolute inset-0 bg-emerald-100 opacity-50 rounded-full'
+                          className='absolute inset-0 bg-cyan-100 opacity-50 rounded-full'
                         ></span>
                         <span className='relative'>Delete Trainer</span>
                       </button>

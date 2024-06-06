@@ -5,6 +5,7 @@ import Select from "react-select";
 import GetPhoto from "../../../Components/GetPhoto";
 import useAxiosCommon from "../../../Hooks/useAxiosCommon";
 import Swal from "sweetalert2";
+import useAllClass from "../../../Hooks/useAllClass";
 const times = [
   { value: "08:00-09:00", label: "8.00AM - 9.00AM" },
   { value: "10:00-12:00", label: "10.00AM - 12.00PM" },
@@ -28,6 +29,7 @@ const BeTrainer = () => {
   const [selectedTimes, setSelectedTimes] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const axiosCommon = useAxiosCommon();
+  const [classes,, isLoading] = useAllClass();
 
   const handleSelectChange = (selectedOptions) => {
     setSelectedValues(selectedOptions);
@@ -78,6 +80,7 @@ const BeTrainer = () => {
       profile_image,
       status: 'pending'
     };
+    console.log(newData);
 
     try{
         const { data } = await axiosCommon.post('/applied-trainers', newData)
@@ -107,7 +110,7 @@ const BeTrainer = () => {
 
   return (
     <div>
-      <form onSubmit={handleTrainer} className="border-2 p-12 bg-emerald-50">
+      <form onSubmit={handleTrainer} className=" p-12 bg-cyan-50">
         <div className="grid grid-cols-6 gap-4 ">
           <div className="col-span-full sm:col-span-3">
           <label className="text-lg font-medium text-slate-600 mb-2">
@@ -172,7 +175,7 @@ const BeTrainer = () => {
               <label className="text-lg font-medium text-slate-600 ">
                 Skills :
               </label>
-              <input
+              {/* <input
                 type="checkbox"
                 onChange={(e) =>
                   handleCheckboxChange(e.target.value, e.target.checked)
@@ -182,8 +185,25 @@ const BeTrainer = () => {
                 id="yoga"
                 value={"YogaFit"}
               />{" "}
-              YogaFit
-              <input
+              YogaFit */}
+              <div className=" grid grid-cols-3 gap-2">
+                {
+                  classes.slice(0,10).map(cla => <div className="flex gap-1 items-center" key={cla._id}>
+                   <input
+                type="checkbox"
+                onChange={(e) =>
+                  handleCheckboxChange(e.target.value, e.target.checked)
+                }
+                className="ml-2"
+                name="skill"
+                id="yoga"
+                value={cla.className}
+              />{" "}
+              {cla.className}
+                  </div>)
+                }
+              </div>
+              {/* <input
                 className="ml-2"
                 type="checkbox"
                 name="skill"
@@ -204,7 +224,7 @@ const BeTrainer = () => {
                 }
                 value={"CardioBlast"}
               />{" "}
-              CardioBlast
+              CardioBlast */}
             </div>
           </div>
 
@@ -267,7 +287,7 @@ const BeTrainer = () => {
 
         {/* Button */}
         <div className="mt-8">
-          <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-600 text-white px-5 text-sm font-medium tracking-wide ">
+          <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-600 text-white px-5 text-sm font-medium tracking-wide ">
             Submit
           </button>
         </div>

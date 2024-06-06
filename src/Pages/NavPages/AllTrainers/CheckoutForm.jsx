@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, closeModal }) => {
+const CheckoutForm = ({ price, closeModal, classes }) => {
   const stripe = useStripe();
   const navigate = useNavigate();
   const [processing, setProcessing] = useState(false);
@@ -81,7 +81,7 @@ const CheckoutForm = ({ price, closeModal }) => {
       name: user?.displayName,
       email: user?.email,
       price: price,
-
+      booked: classes,
       status: "pending",
       transactionId: paymentIntent.id
     };
@@ -89,6 +89,7 @@ const CheckoutForm = ({ price, closeModal }) => {
     const { data } = await axiosSecure.post("/payments", payment);
     console.log(data);
     if(data?.insertedId){
+      // const { data } = await axiosSecure.put
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -145,6 +146,7 @@ const CheckoutForm = ({ price, closeModal }) => {
 CheckoutForm.propTypes = {
   price: PropTypes.number,
   closeModal: PropTypes.func,
+  classes: PropTypes.string,
 };
 
 export default CheckoutForm;

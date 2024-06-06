@@ -13,6 +13,7 @@ const TrainerBooking = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams] = useSearchParams("");
   const [pack, setPack] = useState("basic");
+  
   // const index = searchParams.get("slot") || 'Helo'
   console.log(value);
 
@@ -30,6 +31,9 @@ const TrainerBooking = () => {
       return data;
     },
   });
+
+
+  const [classes, setClasses] = useState(trainer.skills[0]);
   const {
     full_name,
     email,
@@ -85,11 +89,30 @@ const TrainerBooking = () => {
               <option value="premium">Premium</option>
             </select>
           </div>
+          <div className="flex gap-6 items-center my-6">
+            <h1 className="text-xl font-medium">Select Class : </h1>
+            <select
+              onChange={(e) => {
+                console.log(e.target.value);
+                setClasses(e.target.value);
+              }}
+              required
+              className=" py-2 px-3 w-1/2 border-2 rounded-lg"
+              name=""
+              id=""
+            >
+              {/* <option value="" disabled selected hidden>Select Package</option> */}
+            {
+              skills.map(skill =>   <option key={skill._id} value={skill}>{skill}</option>)
+            }
+             
+            </select>
+          </div>
           <div>
             {/* to={`/payment/${id}?slot=${index}&&package=${pack}`} */}
             <Link onClick={() => setIsOpen(true)} className="mx-auto w-full">
               {/* <Button text={'Join Now'}></Button> */}
-              <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-100 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-100 disabled:text-emerald-400 disabled:shadow-none">
+              <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-100 px-5 text-sm font-medium tracking-wide text-cyan-500 transition duration-300 hover:bg-cyan-100 hover:text-cyan-600 focus:bg-cyan-200 focus:text-cyan-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-cyan-300 disabled:bg-cyan-100 disabled:text-cyan-400 disabled:shadow-none">
                 Join Now
               </button>
             </Link>
@@ -100,6 +123,7 @@ const TrainerBooking = () => {
               trainer={trainer}
               slot={value}
               pack={pack}
+              classes={classes}
             />
           </div>
         </div>

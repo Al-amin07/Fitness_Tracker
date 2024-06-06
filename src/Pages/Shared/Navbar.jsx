@@ -35,9 +35,9 @@ const Navbar = () => {
               id="WindUI"
               aria-label="WindUI logo"
               aria-current="page"
-              className="flex items-center gap-2 whitespace-nowrap py-3 text-3xl focus:outline-none lg:flex-1"
+              className="flex items-center  whitespace-nowrap py-3 text-2xl font-bold focus:outline-none lg:flex-1"
             >
-              Fitness<sub className="text-emerald-700">Synced</sub>
+              Fitness<sup className="text-cyan-700">Synced</sup>
             </Link>
             {/* For Small Device */}
             <button
@@ -137,7 +137,7 @@ const Navbar = () => {
                   </div>
                   <button
                     onClick={handleLogOut}
-                    className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide  transition duration-300 rounded focus-visible:outline-none whitespace-nowrap  disabled:shadow-none bg-emerald-600 text-white"
+                    className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide  transition duration-300 rounded focus-visible:outline-none whitespace-nowrap  disabled:shadow-none bg-cyan-600 text-white"
                   >
                     Log Out
                   </button>

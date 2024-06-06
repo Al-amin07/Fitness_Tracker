@@ -15,7 +15,7 @@ const AboutUs = () => {
                    
                     <h3 className="text-2xl font-bold">Who We Are</h3>
                     <p className="my-4 dark:text-gray-600 text-lg">At Fitness Tracker , we are passionate about helping you achieve your health and fitness goals. Our mission is to empower individuals to live healthier lives through innovative technology and personalized insights. We believe that everyone has the potential to reach their fitness goals, and we’re here to provide the tools and support you need to succeed.</p>
-                    <button  className="bg-emerald-600 lg:w-2/6 px-3 py-2 rounded text-white font-medium">Learn More</button>
+                    <button  className="bg-cyan-600 lg:w-2/6 px-3 py-2 rounded text-white font-medium">Learn More</button>
                 </div>
             </div>
             <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse">
@@ -24,7 +24,7 @@ const AboutUs = () => {
                    
                     <h3 className="text-2xl font-bold">Our Mission</h3>
                     <p className="my-6 dark:text-gray-600 text-lg">Our mission is to revolutionize the way people approach fitness by providing state-of-the-art tracking solutions that are accessible, accurate, and easy to use. We strive to make fitness tracking an integral part of everyday life, helping you stay motivated and informed on your journey to better health.</p>
-                    <button  className="bg-emerald-600 lg:w-2/6 px-3 py-2 rounded text-white font-medium">Learn More</button>
+                    <button  className="bg-cyan-600 lg:w-2/6 px-3 py-2 rounded text-white font-medium">Learn More</button>
                 </div>
             </div>
             <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
@@ -39,7 +39,7 @@ const AboutUs = () => {
                    
                   </ul>
                   
-                    <button  className="bg-emerald-600 lg:w-2/6 px-3 py-2 rounded text-white font-medium">Learn More</button>
+                    <button  className="bg-cyan-600 lg:w-2/6 px-3 py-2 rounded text-white font-medium">Learn More</button>
                 </div>
             </div>
         </div>

@@ -46,7 +46,7 @@ const AddNewClass = () => {
         const classDetails = {
             className,
             level,
-            
+            booked: 0,
             details,
             photo,
             teachers: selectedValues
@@ -132,7 +132,7 @@ const AddNewClass = () => {
                 </select>
             </div>
             <div className=" col-span-full sm:col-span-3">
-            <label className="text-lg font-medium text-slate-600 ">
+            <label className="text-lg  font-medium text-slate-600 ">
               Available Trainers
             </label>
             <Select
@@ -155,7 +155,7 @@ const AddNewClass = () => {
          </div>
           </div>
         <div>
-        <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-emerald-600 text-white px-5 text-sm font-medium tracking-wide ">Submit</button>
+        <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-600 text-white px-5 text-sm font-medium tracking-wide ">Submit</button>
         </div>
         </form>
       </section>

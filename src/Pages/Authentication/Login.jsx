@@ -81,7 +81,7 @@ const Login = () => {
         Dont have account?
         <Link
           to='/register'
-          className="focus:underline hover:underline hover:text-emerald-600"
+          className="focus:underline hover:underline hover:text-cyan-600"
         >
           Sign up here
         </Link>
@@ -164,7 +164,7 @@ const Login = () => {
         <button
         
           type="submit"
-          className="w-full px-8 py-3 font-semibold rounded-md bg-emerald-600  text-white"
+          className="w-full px-8 py-3 font-semibold rounded-md bg-cyan-600  text-white"
         >
           Sign in
         </button>
