@@ -3,6 +3,7 @@ import useRole from "../../Hooks/useRole";
 import { Link } from "react-router-dom";
 import Admin from "../../DashBoard/Admin/Admin";
 import Member from "../../DashBoard/Member/Member";
+import Trainer from "../../DashBoard/Trainer/Trainer";
 
 
 
@@ -60,7 +61,7 @@ const Sidebar = () => {
             <div>
               <ul className="flex flex-1 flex-col gap-1 py-3">
                 <li className="px-3">
-                  <Link className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 ">
+                  <Link className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-200 hover:text-cyan-700 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-700 ">
                     <div className="flex items-center self-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +87,7 @@ const Sidebar = () => {
                 </li>
              
                 {role === 'member' && <Member/>}
+                {role === 'trainer' && <Trainer/>}
                 {role === "admin" && <Admin />}
               </ul>
             </div>

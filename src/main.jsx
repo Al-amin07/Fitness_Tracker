@@ -23,6 +23,8 @@ import AppliedTrainer from "./DashBoard/Admin/AdminPage/AppliedTrainer.jsx";
 import AddNewClass from "./DashBoard/Admin/AdminPage/AddNewClass.jsx";
 import TrainerBooking from "./Pages/NavPages/AllTrainers/TrainerBooking.jsx";
 import Payment from "./Pages/NavPages/AllTrainers/Payment.jsx";
+import ManageSlot from "./DashBoard/Trainer/ManageSlot.jsx";
+import AddForum from "./DashBoard/Shared/AddForum.jsx";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +115,15 @@ const router = createBrowserRouter([
         path: "balance",
         element: <AllNewsLetter />,
       },
+      // Trainer Page
+      {
+        path: 'manage-slot',
+        element: <ManageSlot/>
+      },
+      {
+        path: 'add-forum',
+        element: <AddForum/>
+      }
     ],
   },
 ]);

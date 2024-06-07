@@ -11,7 +11,7 @@ const TrainerInfo = ({ trainer }) => {
     profile_image,
     available_slot,
     skills,
-    Education,
+    // Education,
     details,
   } = trainer;
   
@@ -71,7 +71,7 @@ const TrainerInfo = ({ trainer }) => {
               src={profile_image}
               alt="user name"
               title="user name"
-              className="max-w-full "
+              className="max-w-full h-[150px]"
             />
           </figure>
           <div className="py-6 space-y-2">

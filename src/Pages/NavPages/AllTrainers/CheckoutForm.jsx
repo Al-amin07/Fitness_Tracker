@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, closeModal, classes }) => {
+const CheckoutForm = ({ price, closeModal, classes, slot, trainer }) => {
   const stripe = useStripe();
   const navigate = useNavigate();
   const [processing, setProcessing] = useState(false);
@@ -81,24 +81,35 @@ const CheckoutForm = ({ price, closeModal, classes }) => {
       name: user?.displayName,
       email: user?.email,
       price: price,
-      booked: classes,
+      className: classes,
       status: "pending",
-      transactionId: paymentIntent.id
+      transactionId: paymentIntent.id,
+      time: new Date().toLocaleDateString()
     };
-    console.log(payment);
-    const { data } = await axiosSecure.post("/payments", payment);
+    const bookedDetails = {
+      name: user?.displayName,
+      email: user?.email,
+      slot: slot
+    }
+    console.log(trainer);
+    
+    // console.log(bookedDetails);
+    const { data } = await axiosSecure.post("/payments", {payment, bookedDetails, trainer});
+    
+    // const { data: trainerData } = await axiosSecure.put('/payments', {trainer, bookedDetails})
+    // console.log(data, trainerData);
     console.log(data);
-    if(data?.insertedId){
-      // const { data } = await axiosSecure.put
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Thank You For The Payment",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        navigate("/all-trainer");
-      }
+    // if(data?.insertedId){
+    //   // const { data } = await axiosSecure.put
+    //     Swal.fire({
+    //       position: "top-end",
+    //       icon: "success",
+    //       title: "Thank You For The Payment",
+    //       showConfirmButton: false,
+    //       timer: 1500
+    //     });
+    //     navigate("/all-trainer");
+    //   }
     
  
   };
@@ -147,6 +158,8 @@ CheckoutForm.propTypes = {
   price: PropTypes.number,
   closeModal: PropTypes.func,
   classes: PropTypes.string,
+  slot: PropTypes.string,
+  trainer: PropTypes.object,
 };
 
 export default CheckoutForm;

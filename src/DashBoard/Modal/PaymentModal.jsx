@@ -103,6 +103,8 @@ const PaymentModal = ({
                   <CheckoutForm 
                   closeModal={closeModal} 
                   classes={classes}
+                  slot={slot}
+                  trainer={trainer}
                   price={price}/>
                 </Elements>
                
