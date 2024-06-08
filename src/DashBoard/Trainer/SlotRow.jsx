@@ -8,7 +8,7 @@ const SlotRow = ({index, item, handleDelete}) => {
         slot = 'Morning';
     }
     else if(item.split(' ')[1] === '1.00PM' || item.split(' ')[1] === '4.00PM'){
-        slot = 'After Noon'
+        slot = 'Afternoon'
     }
     else{
         slot = 'Evening'

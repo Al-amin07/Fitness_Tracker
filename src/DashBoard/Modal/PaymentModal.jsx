@@ -19,18 +19,13 @@ const PaymentModal = ({
   trainer,
   slot,
   pack,
+  slotIndex
 }) => {
   let price = "";
   const { user } = useAuth();
   const {
     full_name,
-    // email,
-    // skills,
-    // years_of_experience,
-    // profile_image,
-    // details,
-    // age,
-    // available_slot,
+    
   } = trainer;
 
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_SECRET)
@@ -81,7 +76,7 @@ const PaymentModal = ({
                       </h3>
                       <p className="text-slate-700">Slot : {slot}</p>
                       <p className="text-slate-700">Package : {pack}</p>
-                      <p className="text-slate-700">Class : {classes}</p>
+                      <p className="text-slate-700">Class : {classes.map((item, ind) => <span key={ind} className="font-medium mr-4">{item}</span>)}</p>
                       <p className=" text-2xl text-cyan-700">
                         Price : ${price}
                       </p>
@@ -105,6 +100,7 @@ const PaymentModal = ({
                   classes={classes}
                   slot={slot}
                   trainer={trainer}
+                  slotIndex={slotIndex}
                   price={price}/>
                 </Elements>
                
@@ -125,6 +121,7 @@ PaymentModal.propTypes = {
   slot: PropTypes.string,
   pack: PropTypes.string,
   classes: PropTypes.string,
+  slotIndex: PropTypes.number,
 
   isOpen: PropTypes.bool,
 };

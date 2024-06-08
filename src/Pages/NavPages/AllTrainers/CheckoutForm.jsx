@@ -6,17 +6,17 @@ import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, closeModal, classes, slot, trainer }) => {
+const CheckoutForm = ({ price, closeModal, classes, slot, trainer, slotIndex }) => {
   const stripe = useStripe();
   const navigate = useNavigate();
   const [processing, setProcessing] = useState(false);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-//   const [transactionId, setTransactionId] = useState("");
+
   const [error, setError] = useState("");
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
-  console.log(price);
+  
 
   useEffect(() => {
     getClientSecret(price);
@@ -89,7 +89,8 @@ const CheckoutForm = ({ price, closeModal, classes, slot, trainer }) => {
     const bookedDetails = {
       name: user?.displayName,
       email: user?.email,
-      slot: slot
+      slot: slot,
+      slotIndex
     }
     console.log(trainer);
     
@@ -159,6 +160,7 @@ CheckoutForm.propTypes = {
   closeModal: PropTypes.func,
   classes: PropTypes.string,
   slot: PropTypes.string,
+  slotIndex: PropTypes.number,
   trainer: PropTypes.object,
 };
 

@@ -35,12 +35,22 @@ const Trainer = () => {
              </li>
              <li className="px-3">
                <Link
+                 to='add-slot'
+                 className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
+               >
+                 <IoMdAdd className="text-xl"/>
+                 <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                  Add New Slot
+                 </div>
+                 
+               </Link>
+               <Link
                  to='add-forum'
                  className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
                >
                  <IoMdAdd className="text-xl"/>
                  <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                  Add Slot
+                  Add Forum
                  </div>
                  
                </Link>

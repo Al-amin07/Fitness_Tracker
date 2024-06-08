@@ -9,59 +9,15 @@ const TrainerInfo = ({ trainer }) => {
     age,
     years_of_experience,
     profile_image,
-    available_slot,
+    slots,
     skills,
     // Education,
     details,
   } = trainer;
+  console.log(slots);
   
   return (
-    //  <div className='flex gap-6'>
-    //   <div className="flex flex-1 flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
-
-    //   <figure className="flex-1">
-    //     <img
-    //       src={profile_image}
-    //       alt="card image"
-    //       className="object-cover min-h-full aspect-auto"
-    //     />
-    //   </figure>
-
-    //   <div className="flex-1 p-6 sm:mx-6 sm:px-0">
-    //     <header className="flex gap-4 mb-4">
-
-    //       <div>
-    //         <h3 className="text-xl font-medium text-slate-700">
-    //          {full_name}
-    //         </h3>
-    //         <p className="text-sm text-slate-400"> {}</p>
-    //       </div>
-    //     </header>
-    //     <p>
-    //      {details}
-    //     </p>
-    //     <div className='my-3'>
-    //       <h2 className='text-lg font-medium'>Education : </h2>
-    //       <ul className='list-disc list-inside space-y-2'>
-    //           {
-    //               Education?.slice(0,2)?.map((skill, ind) => <li className='text-cyan-700' key={ind+1}>{skill}</li>)
-    //           }
-    //       </ul>
-    //     </div>
-    //     <div className='my-3'>
-    //       <h2 className='text-lg font-medium'>Skills in : </h2>
-    //       <ul className='list-[upper-roman] list-inside'>
-    //           {
-    //               skills?.map((skill, ind) => <li className='text-cyan-700' key={ind+1}>{skill}</li>)
-    //           }
-    //       </ul>
-    //     </div>
-    //   </div>
-    // </div>
-    // <div className='flex-1 bg-green-200'>
-
-    // </div>
-    //  </div>
+    
 
     <div className="flex px-16 gap-8">
       <div className="overflow-hidden  rounded-2xl flex-1 bg-white  shadow-xl shadow-slate-200">
@@ -120,18 +76,30 @@ const TrainerInfo = ({ trainer }) => {
           Available Slot : {" "}
         </h2>
         <div className="grid grid-cols-3 gap-5">
-          {available_slot?.map((item, ind) => (
-            <Link to={`/trainer-booking/${trainer._id}?slot=${available_slot[ind]}`}  key={ind}>
+          {slots?.map((item, ind) => (
+            <Link to={`/trainer-booking/${trainer._id}?slot=${item.slotName + '  ' + item.slotTime}&&index=${ind}`}  key={ind}>
             <button
             
           
             className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-100 px-5 text-sm font-medium tracking-wide text-cyan-500 transition duration-300 hover:bg-cyan-100 hover:text-cyan-600 focus:bg-cyan-200 focus:text-cyan-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-cyan-300 disabled:bg-cyan-100 disabled:text-cyan-400 disabled:shadow-none"
           >
-            {item}
+            {item.slotName + '  ' + item.slotTime + 'Hour'}
           </button>
             </Link>
           ))}
         </div>
+        {/* <div>
+          {
+            slots?.map((item, index) =>  <button
+            key={index}
+          
+              className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-100 px-5 text-sm font-medium tracking-wide text-cyan-500 transition duration-300 hover:bg-cyan-100 hover:text-cyan-600 focus:bg-cyan-200 focus:text-cyan-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-cyan-300 disabled:bg-cyan-100 disabled:text-cyan-400 disabled:shadow-none"
+            >
+              {item.slotName}
+            </button>)
+          }
+        </div> */}
+
       </div>
     </div>
   );

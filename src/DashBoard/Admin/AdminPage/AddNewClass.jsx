@@ -4,12 +4,12 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAllTrainer from "../../../Hooks/useAllTrainer";
 import Select from "react-select";
-import SketLoading from "../../../Loading/SketLoading";
+// import SketLoading from "../../../Loading/SketLoading";
 import Loading from "../../../Loading/Loading";
 const AddNewClass = () => {
     const [seleced, setSelected] = useState('beginner');
     const [selectedValues, setSelectedValues] = useState([]);
-    const [trainerSelected, setTrainerSelected] = useState();
+    // const [trainerSelected, setTrainerSelected] = useState();
     const axiosSecure = useAxiosSecure();
     const [trainers, ,isLoading] = useAllTrainer();
     const newTrainer = trainers.map(trainer => ({
@@ -49,7 +49,7 @@ const AddNewClass = () => {
             booked: 0,
             details,
             photo,
-            teachers: selectedValues
+            teachers: [],
         }
         // console.log(classDetails);
         try{
@@ -118,7 +118,7 @@ const AddNewClass = () => {
                 id=""
               />
             </div>
-            <div className="flex flex-col col-span-full sm:col-span-3">
+            <div className="flex flex-col col-span-full ">
             <label
                 
                 className="text-lg font-medium text-slate-600 "
@@ -131,7 +131,7 @@ const AddNewClass = () => {
                     <option  value="advanced">Advanced</option>
                 </select>
             </div>
-            <div className=" col-span-full sm:col-span-3">
+            {/* <div className=" col-span-full sm:col-span-3">
             <label className="text-lg  font-medium text-slate-600 ">
               Available Trainers
             </label>
@@ -142,9 +142,9 @@ const AddNewClass = () => {
               isMulti
               options={newTrainer}
             />
-          </div>
+          </div> */}
 
-         <div className="flex flex-col col-span-full sm:col-span-6">
+         <div className="flex flex-col col-span-full">
          <label
                
                 className="text-lg font-medium text-slate-600 "

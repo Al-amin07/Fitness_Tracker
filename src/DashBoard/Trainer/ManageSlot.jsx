@@ -4,13 +4,14 @@ import useAuth from "../../Hooks/useAuth";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import SlotRow from "./SlotRow";
+import Loading from "../../Loading/Loading";
 
 
 const ManageSlot = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     console.log(user);
-    const {  data: trainer, refetch } = useQuery({
+    const {  data: trainer, refetch, isLoading } = useQuery({
         queryKey: ['slots', user?.email],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/trainers/${user?.email}`);
@@ -45,6 +46,7 @@ const ManageSlot = () => {
           });
     }
     console.log(trainer);
+    if(isLoading) return <Loading/>
     return (
         <div>
             <h2 className="text-4xl font-semibold text-center mb-8">Manage Your Slot</h2>
@@ -90,6 +92,7 @@ const ManageSlot = () => {
             trainer?.available_slot?.map((item, index) => <SlotRow 
             item={item} 
             key={index}
+            index={index}
             handleDelete={handleDelete}
             />)
            }

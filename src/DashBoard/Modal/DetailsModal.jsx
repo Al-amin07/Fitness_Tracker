@@ -17,7 +17,8 @@ const DetailsModal = ({ closeModal, isOpen, modalHandler, item }) => {
     profile_image,
     details,
     age,
-    available_slot
+    available_day,
+    time_in_day
   } = item;
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -63,11 +64,12 @@ const DetailsModal = ({ closeModal, isOpen, modalHandler, item }) => {
                  <p className="text-slate-600 my-3">{details}</p>
                 <div>
                     <h2>Experience : {years_of_experience}</h2>
+                    <h2>Times In a Day : {time_in_day} Hours</h2>
                     <h2 className="">Skill in : {skills?.map((item, index) => <span className="mr-3 text-lg font-medium" key={index}>{item}</span>)}</h2>
-                    <p className="text-lg font-medium mt-3 mb-2">Available selected Slot : </p>
-                     <ul>
-                    {available_slot.map((item, ind) => <li key={ind}>{item}</li>)}
-                        </ul>
+                    <span className="text-lg font-medium mt-3 mb-2">Available Days : </span>
+                     <>
+                    {available_day.map((item, ind) => <span key={ind}>{item.label + ' '} </span>)}
+                        </>
 
                 </div>
                 <hr className="mt-8 " />

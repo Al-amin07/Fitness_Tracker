@@ -1,19 +1,25 @@
 import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 
-import Select from "react-select";
 import GetPhoto from "../../../Components/GetPhoto";
 import useAxiosCommon from "../../../Hooks/useAxiosCommon";
 import Swal from "sweetalert2";
-import useAllClass from "../../../Hooks/useAllClass";
-const times = [
-  { value: "08:00-09:00", label: "8.00AM - 9.00AM" },
-  { value: "10:00-12:00", label: "10.00AM - 12.00PM" },
-  { value: "13:00-15:00", label: "1.00PM - 3.00PM" },
-  { value: "16:00-18:00", label: "4.00PM - 6.00PM" },
-  { value: "18:00-20:00", label: "6.00PM - 8.00PM" },
-  { value: "19:00-21:00", label: "7.00PM - 9.00PM" },
-];
+
+import Select from "react-select";
+
+const fitnessSkills = [
+  { value: "hiit", label: "HIIT" },
+  { value: "yoga", label: "Yoga" },
+  { value: "zumba", label: "Zumba" },
+  { value: "pilates", label: "Pilates" },
+  { value: "spinning", label: "Spinning" },
+  { value: "bootcamp", label: "Bootcamp" },
+  { value: "crossfit", label: "CrossFit" },
+  { value: "kickboxing", label: "Kickboxing" },
+  { value: "barre", label: "Barre" },
+  
+]
+
 
 const options = [
   { value: "sun", label: "Sun" },
@@ -26,45 +32,30 @@ const options = [
 ];
 const BeTrainer = () => {
   const [selectedValues, setSelectedValues] = useState([]);
-  const [selectedTimes, setSelectedTimes] = useState([]);
+  
   const [selectedSkills, setSelectedSkills] = useState([]);
   const axiosCommon = useAxiosCommon();
-  const [classes,, isLoading] = useAllClass();
+  // const [classes,, isLoading] = useAllClass();
 
   const handleSelectChange = (selectedOptions) => {
     setSelectedValues(selectedOptions);
     console.log(selectedOptions);
   };
-  const handleSelectTime = (selectedOptions) => {
-    setSelectedTimes(selectedOptions);
-    console.log(selectedOptions);
-  };
+
   // selectedValues?.forEach(item => console.log(item.label))
   const { user } = useAuth();
 
   const handleTrainer = async(e) => {
-    let arr = [];
+    
     e.preventDefault();
     const form = e.target;
     const full_name = form.fullname.value;
     console.log(full_name);
     const email = user?.email;
     const age = form.age.value;
+    const available_day = [...selectedValues]
+    const time_in_day = form.availabletime.value;
     const skills = [...selectedSkills];
-    //  for (const item of selectedValues) {
-    //   selectedTimes.forEach((element) => {
-    //     let str = item.label + " " + element.label;
-    //     arr.push(str);
-    //   });
-    // }
-    selectedValues.forEach((item) => {
-      selectedTimes.forEach((element) => {
-        let str = item.label + " " + element.label;
-        arr.push(str);
-      });
-    });
-
-    const available_slot = [...arr];
     const years_of_experience = form.experience.value;
     const details = form.details.value;
     // const image = form.image.files[0];
@@ -74,7 +65,8 @@ const BeTrainer = () => {
       email,
       age,
       skills,
-      available_slot,
+      available_day,
+      time_in_day,
       years_of_experience,
       details,
       profile_image,
@@ -97,7 +89,7 @@ const BeTrainer = () => {
     }catch(err){
         console.log(err);
     }
-    // console.log(newData);
+   
   };
 
   const handleCheckboxChange = (value, isChecked) => {
@@ -111,7 +103,10 @@ const BeTrainer = () => {
   return (
     <div>
       <form onSubmit={handleTrainer} className=" p-12 bg-cyan-50">
+
         <div className="grid grid-cols-6 gap-4 ">
+
+          {/* name */}
           <div className="col-span-full sm:col-span-3">
           <label className="text-lg font-medium text-slate-600 mb-2">
               Full Name
@@ -126,6 +121,7 @@ const BeTrainer = () => {
             />
           </div>
 
+          {/* Email */}
           <div className="col-span-full sm:col-span-3">
             <label className="text-lg font-medium text-slate-600 mb-2">
               Email
@@ -142,6 +138,7 @@ const BeTrainer = () => {
             />
           </div>
 
+          {/* Age */}
           <div className="col-span-full sm:col-span-3">
             <label className="text-lg font-medium text-slate-600 mb-2">
               Age
@@ -156,6 +153,7 @@ const BeTrainer = () => {
             />
           </div>
 
+          {/* Image */}
           <div className="flex flex-col col-span-full sm:col-span-3">
             <label className="text-lg font-medium text-slate-600 ">
               Upload Image
@@ -175,20 +173,10 @@ const BeTrainer = () => {
               <label className="text-lg font-medium text-slate-600 ">
                 Skills :
               </label>
-              {/* <input
-                type="checkbox"
-                onChange={(e) =>
-                  handleCheckboxChange(e.target.value, e.target.checked)
-                }
-                className="ml-2"
-                name="skill"
-                id="yoga"
-                value={"YogaFit"}
-              />{" "}
-              YogaFit */}
-              <div className=" grid grid-cols-3 gap-2">
+            
+              <div className=" grid grid-cols-5 gap-2">
                 {
-                  classes.slice(0,10).map(cla => <div className="flex gap-1 items-center" key={cla._id}>
+                  fitnessSkills.map((cla, ind) => <div className="flex gap-1 items-center" key={ind}>
                    <input
                 type="checkbox"
                 onChange={(e) =>
@@ -197,9 +185,9 @@ const BeTrainer = () => {
                 className="ml-2"
                 name="skill"
                 id="yoga"
-                value={cla.className}
+                value={cla.value}
               />{" "}
-              {cla.className}
+              {cla.label}
                   </div>)
                 }
               </div>
@@ -256,17 +244,17 @@ const BeTrainer = () => {
             />
           </div>
 
-          {/* Times in a Days */}
-          <div className=" col-span-full sm:col-span-3">
-            <label className="text-lg font-medium text-slate-600 ">
-              Times in a Days
+              {/* Time in a day */}
+          <div className="col-span-full sm:col-span-3">
+            <label className="text-lg font-medium text-slate-600 mb-2">
+            Available Time in a Days
             </label>
-            <Select
-              onChange={handleSelectTime}
-              className=""
-              closeMenuOnSelect={false}
-              isMulti
-              options={times}
+            <input
+              type="number"
+              name="availabletime"
+              required
+              placeholder=""
+              className="w-full border px-4 py-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
             />
           </div>
 

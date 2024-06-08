@@ -25,6 +25,7 @@ import TrainerBooking from "./Pages/NavPages/AllTrainers/TrainerBooking.jsx";
 import Payment from "./Pages/NavPages/AllTrainers/Payment.jsx";
 import ManageSlot from "./DashBoard/Trainer/ManageSlot.jsx";
 import AddForum from "./DashBoard/Shared/AddForum.jsx";
+import AddSlot from "./DashBoard/Trainer/AddSlot.jsx";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +124,10 @@ const router = createBrowserRouter([
       {
         path: 'add-forum',
         element: <AddForum/>
+      },
+      {
+        path: 'add-slot',
+        element: <AddSlot/>
       }
     ],
   },

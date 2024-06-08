@@ -9,6 +9,7 @@ import Loading from "../../../Loading/Loading";
 const TrainerBooking = () => {
   const { id } = useParams();
   const [value, setValue] = useState("default_value");
+  const [index, setIndex] = useState(0);
   const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams] = useSearchParams("");
@@ -18,11 +19,14 @@ const TrainerBooking = () => {
   console.log(value);
 
   useEffect(() => {
+    const paramsIndex = searchParams.get('index')
     const paramValue = searchParams.get("slot");
-    if (paramValue) {
+    if (paramValue && paramsIndex) {
       setValue(paramValue);
+      setIndex(paramsIndex);
     }
   }, [searchParams]);
+ 
   const { data: trainer = {}, isLoading } = useQuery({
     queryKey: ["trainer", id],
 
@@ -31,18 +35,17 @@ const TrainerBooking = () => {
       return data;
     },
   });
-
-
-  const [classes, setClasses] = useState(trainer.skills[0]);
+ 
   const {
-    full_name,
-    email,
-    age,
-    years_of_experience,
-    profile_image,
-    // available_slot,
-    skills,
+   
+    slots
   } = trainer;
+  console.log(slots);
+  const slotClass = slots[index]?.classess?.filter((item) => item);
+  console.log(slotClass);
+
+ 
+
 
   const closeModal = () => {
     setIsOpen(false);
@@ -62,10 +65,10 @@ const TrainerBooking = () => {
           <h2 className="text-2xl font-medium ">
             Trainer Name : {trainer.full_name}
           </h2>
-          <h2 className="text-lg font-medium my-2">Selected Slot : {value}</h2>
+          <h2 className="text-lg font-medium my-2">Selected Slot : {value} hours</h2>
           <h2>
             Classes :{" "}
-            {skills.map((element, ind) => (
+            {slots[index].classess?.map((element, ind) => (
               <span key={ind + 2} className="mr-4 text-sm font-semibold">
                 {element}
               </span>
@@ -89,7 +92,7 @@ const TrainerBooking = () => {
               <option value="premium">Premium</option>
             </select>
           </div>
-          <div className="flex gap-6 items-center my-6">
+          {/* <div className="flex gap-6 items-center my-6">
             <h1 className="text-xl font-medium">Select Class : </h1>
             <select
               onChange={(e) => {
@@ -101,17 +104,17 @@ const TrainerBooking = () => {
               name=""
               id=""
             >
-              {/* <option value="" disabled selected hidden>Select Package</option> */}
+              
             {
               skills.map(skill =>   <option key={skill._id} value={skill}>{skill}</option>)
             }
              
             </select>
-          </div>
+          </div> */}
           <div>
             {/* to={`/payment/${id}?slot=${index}&&package=${pack}`} */}
             <Link onClick={() => setIsOpen(true)} className="mx-auto w-full">
-              {/* <Button text={'Join Now'}></Button> */}
+            
               <button className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-100 px-5 text-sm font-medium tracking-wide text-cyan-500 transition duration-300 hover:bg-cyan-100 hover:text-cyan-600 focus:bg-cyan-200 focus:text-cyan-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-cyan-300 disabled:bg-cyan-100 disabled:text-cyan-400 disabled:shadow-none">
                 Join Now
               </button>
@@ -123,7 +126,8 @@ const TrainerBooking = () => {
               trainer={trainer}
               slot={value}
               pack={pack}
-              classes={classes}
+              classes={slotClass}
+              slotIndex={index}
             />
           </div>
         </div>

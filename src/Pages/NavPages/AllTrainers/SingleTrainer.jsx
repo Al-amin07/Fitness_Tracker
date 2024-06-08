@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa6";
 const SingleTrainer = ({trainer}) => {
-    const {full_name, email, age, years_of_experience,profile_image, available_slot, skills, details, Education } = trainer
+    const {full_name, email, age, years_of_experience,profile_image, slots, skills, details, Education } = trainer
     return (
      
   
@@ -38,14 +38,13 @@ const SingleTrainer = ({trainer}) => {
       </div>
     </div>
           <div className='my-2'>
-            <h2 className='text-lg font-medium'>Available Slots : </h2>
+            <h2 className='text-lg font-medium'>Available Slot Name : </h2>
             <ul className='list-disc list-inside'>
                 {
                    
-                   available_slot.length > 3 ?  
-                   available_slot?.slice(0,3)?.map((item, index) => <li key={index}>{item}</li>)
-                   : 
-                   available_slot?.map((item, index) => <li key={index}>{item}</li>)
+                  
+                  
+                   slots?.map((item, index) => <li key={index}>{item.slotName} Slot</li>)
                 }
             </ul>
           </div>
