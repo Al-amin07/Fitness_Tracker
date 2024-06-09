@@ -21,7 +21,7 @@ const PaymentModal = ({
   pack,
   slotIndex
 }) => {
-  let price = "";
+  let price ;
   const { user } = useAuth();
   const {
     full_name,
@@ -76,7 +76,7 @@ const PaymentModal = ({
                       </h3>
                       <p className="text-slate-700">Slot : {slot}</p>
                       <p className="text-slate-700">Package : {pack}</p>
-                      <p className="text-slate-700">Class : {classes.map((item, ind) => <span key={ind} className="font-medium mr-4">{item}</span>)}</p>
+                      <p className="text-slate-700">Class : {classes?.map((item, ind) => <span key={ind} className="font-medium mr-4">{item}</span>)}</p>
                       <p className=" text-2xl text-cyan-700">
                         Price : ${price}
                       </p>

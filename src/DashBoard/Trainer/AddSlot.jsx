@@ -87,6 +87,7 @@ const AddSlot = () => {
           return;
         }
         const newSlot = {
+          
           slotName : selectedTimes.label,
           slotTime: timesInDay,
           classess: selectedSkills

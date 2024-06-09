@@ -24,6 +24,7 @@ const TrainerBooking = () => {
     if (paramValue && paramsIndex) {
       setValue(paramValue);
       setIndex(paramsIndex);
+      // console.log(value, index);
     }
   }, [searchParams]);
  
@@ -41,8 +42,13 @@ const TrainerBooking = () => {
     slots
   } = trainer;
   console.log(slots);
-  const slotClass = slots[index]?.classess?.filter((item) => item);
-  console.log(slotClass);
+  let slotClass = []
+  if (index){
+    const ind = parseInt(index)
+    slotClass = slots[ind]?.classess?.filter((item) => item);
+    console.log(slotClass);
+  }
+ 
 
  
 
@@ -68,7 +74,7 @@ const TrainerBooking = () => {
           <h2 className="text-lg font-medium my-2">Selected Slot : {value} hours</h2>
           <h2>
             Classes :{" "}
-            {slots[index].classess?.map((element, ind) => (
+            {slots[index]?.classess?.map((element, ind) => (
               <span key={ind + 2} className="mr-4 text-sm font-semibold">
                 {element}
               </span>

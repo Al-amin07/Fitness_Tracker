@@ -96,21 +96,21 @@ const CheckoutForm = ({ price, closeModal, classes, slot, trainer, slotIndex }) 
     
     // console.log(bookedDetails);
     const { data } = await axiosSecure.post("/payments", {payment, bookedDetails, trainer});
-    
+    console.log(data);
     // const { data: trainerData } = await axiosSecure.put('/payments', {trainer, bookedDetails})
     // console.log(data, trainerData);
-    console.log(data);
-    // if(data?.insertedId){
-    //   // const { data } = await axiosSecure.put
-    //     Swal.fire({
-    //       position: "top-end",
-    //       icon: "success",
-    //       title: "Thank You For The Payment",
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     });
-    //     navigate("/all-trainer");
-    //   }
+     const {paymentResult, result} = data;
+    if(paymentResult?.insertedId){
+      // const { data } = await axiosSecure.put
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Thank You For The Payment",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate("/all-trainer");
+      }
     
  
   };

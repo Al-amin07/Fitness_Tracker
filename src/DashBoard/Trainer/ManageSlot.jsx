@@ -5,13 +5,18 @@ import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import SlotRow from "./SlotRow";
 import Loading from "../../Loading/Loading";
+import { useState } from "react";
 
 
 const ManageSlot = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const closeModal = () => {
+    setIsOpen(false)
+  }
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    console.log(user);
-    const {  data: trainer, refetch, isLoading } = useQuery({
+    // console.log(user);
+    const {  data: trainer = {}, refetch, isLoading } = useQuery({
         queryKey: ['slots', user?.email],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/trainers/${user?.email}`);
@@ -19,8 +24,10 @@ const ManageSlot = () => {
         }
     })
 
-    const handleDelete = item => {
-        console.log(item);
+    const {  slots } = trainer;
+
+    const handleDelete = (item, index) => {
+     
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -31,7 +38,7 @@ const ManageSlot = () => {
             confirmButtonText: "Yes, delete it!"
           }).then(async(result) => {
             if (result.isConfirmed) {
-                const { data: updateData } = await axiosSecure.put(`/trainer/slot/${user?.email}?slot=${item}`)
+                const { data: updateData } = await axiosSecure.put(`/trainer/slot/${user?.email}?index=${index}`)
                 console.log(updateData);
                 if(updateData.modifiedCount > 0){
                     refetch();
@@ -72,13 +79,19 @@ const ManageSlot = () => {
                 scope="col"
                 className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
               >
-                Day
+                Duration
               </th>
               <th
                 scope="col"
                 className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
               >
-                Time
+                Status
+              </th>
+              <th
+                scope="col"
+                className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
+              >
+                Booking Details
               </th>
               <th
                 scope="col"
@@ -89,11 +102,14 @@ const ManageSlot = () => {
               
             </tr>
            {
-            trainer?.available_slot?.map((item, index) => <SlotRow 
+            slots?.map((item, index) => <SlotRow 
             item={item} 
             key={index}
             index={index}
+            closeModal={closeModal}
             handleDelete={handleDelete}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
             />)
            }
            
