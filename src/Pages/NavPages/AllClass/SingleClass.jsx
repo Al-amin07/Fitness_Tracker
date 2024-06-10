@@ -25,7 +25,7 @@ const SingleClass = ({ item }) => {
           <div className="flex flex-col mt-3 justify-center">
             <div className="flex space-x-5">
              {
-              teachers.map(teacher => <Link
+              teachers.slice(0,5).map(teacher => <Link
               to={`/trainer-details/${teacher.id}`}
               key={teacher.id}>
                    <img

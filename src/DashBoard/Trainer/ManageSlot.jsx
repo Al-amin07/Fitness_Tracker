@@ -9,10 +9,7 @@ import { useState } from "react";
 
 
 const ManageSlot = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const closeModal = () => {
-    setIsOpen(false)
-  }
+
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     // console.log(user);
@@ -106,10 +103,10 @@ const ManageSlot = () => {
             item={item} 
             key={index}
             index={index}
-            closeModal={closeModal}
+            // closeModal={closeModal}
             handleDelete={handleDelete}
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
+            // isOpen={isOpen}
+            // setIsOpen={setIsOpen}
             />)
            }
            

@@ -22,36 +22,36 @@ const AppliedTrainer = () => {
         <div>
             <table className="min-w-full leading-normal">
         <thead >
-          <tr >
+          <tr  className="shadow-xl">
             <th
             
               scope="col"
-              className="px-5 py-3 shadow-2xl bg-white  border-b border-gray-200 text-gray-800  text-left text-lg uppercase font-medium"
+              className="px-5 py-3 shadow-2xl border-0 text-gray-800  text-left text-lg uppercase font-medium"
             >
              
             </th>
             <th
               scope="col"
-              className="px-5 py-3 shadow-2xl bg-white  border-b border-gray-200 text-gray-800  text-left text-lg uppercase font-medium"
+              className="px-5 py-3 shadow-2xl border-0 text-gray-800  text-left text-lg uppercase font-medium"
             >
               Full Name
             </th>
             <th
               scope="col"
-              className="px-5 py-3 shadow-2xl bg-white  border-b border-gray-200 text-gray-800  text-left text-lg uppercase font-medium"
+              className="px-5 py-3 shadow-2xl border-0  text-gray-800  text-left text-lg uppercase font-medium"
             >
               Age
             </th>
             <th
               scope="col"
-              className="px-5 py-3 shadow-2xl bg-white  border-b border-gray-200 text-gray-800  text-left text-lg uppercase font-medium"
+              className="px-5 py-3 shadow-2xl border-0 text-gray-800  text-left text-lg uppercase font-medium"
             >
              Email
             </th>
 
             <th
               scope="col"
-              className="px-5 py-3 shadow-2xl bg-white  border-b border-gray-200 text-gray-800  text-left text-lg uppercase font-medium"
+              className="px-5 py-3 shadow-2xl border-0 text-gray-800  text-left text-lg uppercase font-medium"
             >
               Action
             </th>

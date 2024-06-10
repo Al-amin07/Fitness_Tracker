@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useRole from "../../Hooks/useRole";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Admin from "../../DashBoard/Admin/Admin";
 import Member from "../../DashBoard/Member/Member";
 import Trainer from "../../DashBoard/Trainer/Trainer";
@@ -51,17 +51,18 @@ const Sidebar = () => {
             isSideNavOpen ? "translate-x-0" : " -translate-x-full"
           }`}
         >
-          <Link to="/" className="text-2xl font-bold mx-auto mt-5">
+          <NavLink to="/" className="text-2xl font-bold mx-auto mt-5">
             Fitness<sup className="text-cyan-700">Synced</sup>
-          </Link>
+          </NavLink>
           <nav
             aria-label="side navigation"
-            className="flex-1 divide-y divide-slate-100 overflow-auto"
+            className="flex-1 divide-y px-3 divide-slate-100 overflow-auto"
           >
             <div>
-              <ul className="flex flex-1 flex-col gap-1 py-3">
-                <li className="px-3">
-                  <Link className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-200 hover:text-cyan-700 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-700 ">
+              <ul className="flex flex-1 flex-col gap-1 py-3 ">
+                <li  className="px-3">
+                  
+                  <NavLink to='/dashboard' end  className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-200 hover:text-cyan-700 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-700 ">
                     <div className="flex items-center self-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +84,7 @@ const Sidebar = () => {
                     <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
                       Dashboard
                     </div>
-                  </Link>
+                  </NavLink>
                 </li>
              
                 {role === 'member' && <Member/>}

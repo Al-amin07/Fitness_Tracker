@@ -5,7 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Main from "./Layout/Main.jsx";
 import AllTrainer from "./Pages/NavPages/AllTrainers/AllTrainer.jsx";
 import AllClass from "./Pages/NavPages/AllClass/AllClass.jsx";
-import Community from "./Pages/NavPages/Community.jsx";
+// import Community from "./Pages/NavPages/Community.jsx";
 import Login from "./Pages/Authentication/Login.jsx";
 import Register from "./Pages/Authentication/Register.jsx";
 import Home from "./Pages/Home/Home.jsx";
@@ -26,6 +26,13 @@ import Payment from "./Pages/NavPages/AllTrainers/Payment.jsx";
 import ManageSlot from "./DashBoard/Trainer/ManageSlot.jsx";
 import AddForum from "./DashBoard/Shared/AddForum.jsx";
 import AddSlot from "./DashBoard/Trainer/AddSlot.jsx";
+import ActivityLog from "./DashBoard/Member/ActivityLog.jsx";
+import Profile from "./DashBoard/Shared/Profile.jsx";
+import Community from "./Pages/NavPages/Community/Community.jsx";
+import AdminDashBoard from "./DashBoard/Admin/AdminDashBoard.jsx";
+import AdminRoute from "./PrivateRoute/AdminRoute.jsx";
+import TrainerRoute from "./PrivateRoute/TrainerRoute.jsx";
+import DiffDashBoard from "./DashBoard/Shared/DiffDashBoard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -92,34 +99,40 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <DashBoard />
+        {/* <AdminDashBoard/> */}
       </PrivateRoute>
     ),
     children: [
       // Admin Page
       {
+        index : true,
+        element: <PrivateRoute><DiffDashBoard></DiffDashBoard></PrivateRoute>
+      },
+      {
         path: "all-news-letter",
-        element: <AllNewsLetter />,
+        element: <AdminRoute><AllNewsLetter /></AdminRoute>,
       },
       {
         path: "all-trainers",
-        element: <AllTrainerss />,
+        element: <AdminRoute><AllTrainerss /></AdminRoute>,
       },
       {
         path: "applied-trainer",
-        element: <AppliedTrainer />,
+        element: <AdminRoute><AppliedTrainer /></AdminRoute>,
       },
       {
         path: "add-new-class",
-        element: <AddNewClass />,
+        element: <AdminRoute><AddNewClass /></AdminRoute>,
       },
       {
         path: "balance",
-        element: <AllNewsLetter />,
+        element: <AdminRoute><AllNewsLetter /></AdminRoute>,
       },
       // Trainer Page
       {
         path: 'manage-slot',
-        element: <ManageSlot/>
+        element:<TrainerRoute><ManageSlot/></TrainerRoute>
+      
       },
       {
         path: 'add-forum',
@@ -127,7 +140,16 @@ const router = createBrowserRouter([
       },
       {
         path: 'add-slot',
-        element: <AddSlot/>
+        element: <TrainerRoute><AddSlot/></TrainerRoute>
+      },
+      // Member Page
+      {
+        path:'activity-log',
+        element: <PrivateRoute><ActivityLog/></PrivateRoute>
+      },
+      {
+        path: 'profile',
+        element: <PrivateRoute><Profile/></PrivateRoute>
       }
     ],
   },

@@ -52,9 +52,9 @@ const TrainerInfo = ({ trainer }) => {
 
               <div className="flex gap-3">
                 <h2 className="text-xl font-medium">Connect with : </h2>
-                <FaFacebook className="text-2xl text-blue-700" />
-                <FaTwitter className="text-2xl text-blue-300" />
-                <FaLinkedin className="text-2xl text-blue-500" />
+                <FaFacebook className="text-2xl text-cyan-700" />
+                <FaTwitter className="text-2xl text-cyan-300" />
+                <FaLinkedin className="text-2xl text-cyan-500" />
               </div>
             </div>
             <div>

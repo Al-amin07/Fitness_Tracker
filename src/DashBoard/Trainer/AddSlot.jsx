@@ -7,23 +7,7 @@ import Loading from "../../Loading/Loading";
 import useAllClass from "../../Hooks/useAllClass";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-// const times = [
-//   { value: "08:00-09:00", label: "8.00AM - 9.00AM" },
-//   { value: "10:00-12:00", label: "10.00AM - 12.00PM" },
-//   { value: "13:00-15:00", label: "1.00PM - 3.00PM" },
-//   { value: "16:00-18:00", label: "4.00PM - 6.00PM" },
-//   { value: "18:00-20:00", label: "6.00PM - 8.00PM" },
-//   { value: "19:00-21:00", label: "7.00PM - 9.00PM" },
-// ];
-// const options = [
-//     { value: "sun", label: "Sun" },
-//     { value: "mon", label: "Mon" },
-//     { value: "tue", label: "Tue" },
-//     { value: "wed", label: "Wed" },
-//     { value: "thu", label: "Thu" },
-//     { value: "fri", label: "Fri" },
-//     { value: "sat", label: "Sat" },
-//   ];
+
 
   const slot = [
     { value: 'Morning', label: 'Morning'},
@@ -52,11 +36,7 @@ const AddSlot = () => {
     const { _id,full_name,years_of_experience,age,available_day, profile_image  ,time_in_day  } = trainer;
     console.log(available_day);
     const [selectedTimes, setSelectedTimes] = useState('')
-    // const [selectedShift, setSelectedShift] = useState('')
-    // const [selectedSkills, setSelectedSkills] = useState('');
-
-
-    // Skills
+  
     const handleCheckboxChange = (value, isChecked) => {
       const newSelectedValues = isChecked
         ? [...selectedSkills, value] // Add value if checked

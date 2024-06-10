@@ -41,13 +41,16 @@ const DetailsModal = ({closeModal, isOpen, item}) => {
                 <DialogPanel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
                   <DialogTitle
                     as='h3'
-                    className='text-lg font-medium leading-6 text-gray-900'
+                    className='text-xl font-bold leading-6 text-gray-900'
                   >
-                    Are you sure?
+                    Booking Customer
                   </DialogTitle>
                   <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                    Name : {}
+                    <p className='text-lg font-semibold text-gray-500'>
+                    Name : {bookingDetails?.name}
+                    </p>
+                    <p className='text-lg font-semibold text-gray-500'>
+                    Email : {bookingDetails?.email}
                     </p>
                   </div>
                   <hr className='mt-8 ' />
@@ -55,7 +58,7 @@ const DetailsModal = ({closeModal, isOpen, item}) => {
                     
                     <button
                       type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-md border border-transparent bg-cyan-100 px-4 py-2 text-sm font-medium text-cyan-900 hover:bg-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2'
                       onClick={closeModal}
                     >
                       Close

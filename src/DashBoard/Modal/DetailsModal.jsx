@@ -6,9 +6,18 @@ import {
   DialogTitle,
   DialogPanel,
 } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import RejectModal from "./RejectModal";
 
-const DetailsModal = ({ closeModal, isOpen, modalHandler, item }) => {
+const DetailsModal = ({ closeModal, isOpen, modalHandler, item, rejectedHandler }) => {
+  const [secondModal, setSecondModal] = useState(false)
+
+
+  const closeSecondModal = () => {
+    setSecondModal(false)
+    closeModal();
+  }
+
   const {
     full_name,
     email,
@@ -20,6 +29,12 @@ const DetailsModal = ({ closeModal, isOpen, modalHandler, item }) => {
     available_day,
     time_in_day
   } = item;
+
+  // const handleClick = () => {
+  //   closeModal();
+  //   setSecondModal(true);
+  // }
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -85,10 +100,19 @@ const DetailsModal = ({ closeModal, isOpen, modalHandler, item }) => {
                   <button
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
+                    onClick={() => {closeModal; setSecondModal(true)}}
                   >
                     Reject
                   </button>
+                  <RejectModal
+                  // closeModal={closeSecondModal}
+                  // isOpen={secondModal}
+                  item={item}
+                  closeSecondModal={closeSecondModal}
+                  secondModal={secondModal}
+                  rejectedHandler={rejectedHandler}
+                
+                  />
                 </div>
               </DialogPanel>
             </TransitionChild>
@@ -102,6 +126,7 @@ const DetailsModal = ({ closeModal, isOpen, modalHandler, item }) => {
 DetailsModal.propTypes = {
     modalHandler: PropTypes.func,
     closeModal: PropTypes.func,
+    rejectedHandler: PropTypes.func,
   
     isOpen: PropTypes.bool,
     item: PropTypes.object,
