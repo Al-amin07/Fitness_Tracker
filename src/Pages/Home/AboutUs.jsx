@@ -6,8 +6,8 @@ import offer from '../../../public/offer2.webp'
 const AboutUs = () => {
     return (
         <section className="p-4 lg:p-8 dark:bg-gray-100 dark:text-gray-800">
-            <h2 className="text-5xl font-bold text-center">About Us</h2>
-            <h1 className="text-slate-800 w-1/2 text-center mt-2 mx-auto mb-6">Discover our mission, vision, and the team behind Your Fitness Tracker Brand. We are committed to continuous improvement and innovation. We listen to our customers and use their feedback to make our products better. </h1>
+            <h2 className="text-3xl md:text-4xl  lg:text-5xl font-semibold text-center">About Us</h2>
+            <h1 className="text-slate-800 md:w-1/2 text-center mt-2 mx-auto mb-6">Discover our mission, vision, and the team behind Your Fitness Tracker Brand. We are committed to continuous improvement and innovation. We listen to our customers and use their feedback to make our products better. </h1>
         <div className="container mx-auto space-y-12">
             <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
                 <img src={team} alt="" className="h-80 dark:bg-gray-500 aspect-video" />

@@ -44,7 +44,7 @@ const SingleTrainer = ({trainer}) => {
                    
                   
                   
-                   slots?.map((item, index) => <li key={index}>{item.slotName} Slot</li>)
+                   slots?.slice(0,3).map((item, index) => <li key={index}>{item.slotName} Slot</li>)
                 }
             </ul>
           </div>

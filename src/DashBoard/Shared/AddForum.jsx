@@ -3,6 +3,7 @@ import GetPhoto from "../../Components/GetPhoto";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useRole from "../../Hooks/useRole";
+import { Helmet } from "react-helmet";
 
 const AddForum = () => {
   const { user } = useAuth();
@@ -42,6 +43,9 @@ const AddForum = () => {
 
   return (
     <div>
+          <Helmet>
+        <title> {role.charAt(0).toUpperCase() + role.slice(1)} | AddForum</title>
+      </Helmet>
       <h1 className="text-4xl font-semibold text-center mb-8">
         Add a Community Forum Post
       </h1>

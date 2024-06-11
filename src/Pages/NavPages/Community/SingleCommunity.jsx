@@ -8,7 +8,7 @@ const SingleCommunity = ({item}) => {
     const [upVote, setUpVote] = useState(0);
     const { name, email, user_image, image, description, role } = item
     return (
-        <div className="rounded-md shadow-md sm:w-96 dark:bg-gray-50 dark:text-gray-800">
+        <div className="rounded-md shadow-md border-t sm:w-96 dark:bg-gray-50 dark:text-gray-800">
         <div className="flex items-center justify-between p-3">
             <div className="flex items-center space-x-2">
                 <img src={user_image} alt="" className="object-cover object-center w-12 h-12 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-300" />

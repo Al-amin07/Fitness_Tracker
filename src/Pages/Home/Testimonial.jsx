@@ -10,7 +10,7 @@ import "@smastrom/react-rating/style.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+// import 'swiper/swiper-bundle.min.css';
 import useAxiosCommon from "../../Hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Loading/Loading";
@@ -34,12 +34,26 @@ const Testimonial = () => {
   return (
     <>
     <div>
-      <h2 className="text-5xl font-bold text-center mb-3">What Our Clients Say</h2>
-      <p className="text-slate-700 w-3/4 mx-auto text-center ">Discover the experiences and success stories from our valued clients. Their feedback highlights the impact of our services and the trust we have built over the years. Read on to see how we have helped businesses and individuals achieve their goals and exceed their expectations.</p>
+      <h2 className="text-3xl  md:text-4xl lg:text-5xl font-bold text-center mb-3">What Our Clients Say</h2>
+      <p className="text-slate-700 md:w-3/4 mx-auto text-center ">Discover the experiences and success stories from our valued clients. Their feedback highlights the impact of our services and the trust we have built over the years. Read on to see how we have helped businesses and individuals achieve their goals and exceed their expectations.</p>
     </div>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
+        breakpoints={{
+          350: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        }}
         hashNavigation={{
           watchState: true,
         }}

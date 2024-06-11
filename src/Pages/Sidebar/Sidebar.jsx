@@ -4,14 +4,14 @@ import { Link, NavLink } from "react-router-dom";
 import Admin from "../../DashBoard/Admin/Admin";
 import Member from "../../DashBoard/Member/Member";
 import Trainer from "../../DashBoard/Trainer/Trainer";
-
+import './Sidebar.css'
 
 
 const Sidebar = () => {
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
     const [role] = useRole();
     return (
-        <>
+        <div className="">
      
         <button
           title="Side navigation"
@@ -30,15 +30,15 @@ const Sidebar = () => {
           <div className="absolute top-1/2 left-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
             <span
               aria-hidden="true"
-              className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-700 transition-all duration-300"
+              className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-cyan-500 transition-all duration-300"
             ></span>
             <span
               aria-hidden="true"
-              className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
+              className="absolute block h-0.5 w-6 transform rounded-full bg-cyan-500 transition duration-300"
             ></span>
             <span
               aria-hidden="true"
-              className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+              className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-cyan-500 transition-all duration-300"
             ></span>
           </div>
         </button>
@@ -47,7 +47,7 @@ const Sidebar = () => {
         <aside
           id="nav-menu-2"
           aria-label="Side navigation"
-          className={`fixed top-0 bottom-0 left-0 z-40 flex w-72 flex-col border-r shadow-2xl transition-transform lg:translate-x-0 ${
+          className={`fixed  bg-slate-50 lg:bg-white top-0 bottom-0 left-0 z-40 flex w-72 flex-col border-r shadow-2xl transition-transform lg:translate-x-0 ${
             isSideNavOpen ? "translate-x-0" : " -translate-x-full"
           }`}
         >
@@ -56,7 +56,7 @@ const Sidebar = () => {
           </NavLink>
           <nav
             aria-label="side navigation"
-            className="flex-1 divide-y px-3 divide-slate-100 overflow-auto"
+            className="flex-1  divide-y px-3 divide-slate-100 overflow-auto"
           >
             <div>
               <ul className="flex flex-1 flex-col gap-1 py-3 ">
@@ -228,7 +228,7 @@ const Sidebar = () => {
           }`}
           onClick={() => setIsSideNavOpen(false)}
         ></div>
-      </>
+      </div>
     );
 };
 

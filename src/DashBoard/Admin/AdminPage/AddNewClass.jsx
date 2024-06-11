@@ -6,6 +6,7 @@ import useAllTrainer from "../../../Hooks/useAllTrainer";
 import Select from "react-select";
 // import SketLoading from "../../../Loading/SketLoading";
 import Loading from "../../../Loading/Loading";
+import { Helmet } from "react-helmet";
 const AddNewClass = () => {
     const [seleced, setSelected] = useState('beginner');
     const [selectedValues, setSelectedValues] = useState([]);
@@ -76,6 +77,9 @@ const AddNewClass = () => {
 
   return (
     <div className="">
+         <Helmet>
+        <title> Admin | AddClass</title>
+      </Helmet>
         <h2 className="text-3xl font-medium text-center mb-6">Add A New Class </h2>
       <section className="p-6  bg-[#EFEFEF] w-full dark:bg-gray-100 dark:text-gray-900">
         <form

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 const SingleClass = ({ item }) => {
   const { className, level, duration, details, teachers, photo } = item;
   return (
-    <div className="flex flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
+    <div className="flex flex-col lg:flex-row overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 ">
       {/*  <!-- Image --> */}
-      <figure className=" w-[250px]">
+      <figure className=" w-full lg:w-[250px]">
         <img
           src={photo}
           alt="card image"
-          className="object-cover min-h-full aspect-auto"
+          className="object-cover w-full h-[200px] lg:min-h-full aspect-auto"
         />
       </figure>
       {/*  <!-- Body--> */}
@@ -24,6 +24,9 @@ const SingleClass = ({ item }) => {
           <h2 className="text-xl font-medium">Trainer Who took this Class</h2>
           <div className="flex flex-col mt-3 justify-center">
             <div className="flex space-x-5">
+              {
+                teachers && teachers.length === 0 ? 'Currently No Teacher' : undefined
+              }
              {
               teachers.slice(0,5).map(teacher => <Link
               to={`/trainer-details/${teacher.id}`}
@@ -35,21 +38,7 @@ const SingleClass = ({ item }) => {
               />
               </Link>)
              }
-              {/* <img
-                alt=""
-                className="w-10 h-10 rounded-full "
-                src="https://source.unsplash.com/40x40/?portrait?2"
-              />
-              <img
-                alt=""
-                className="w-10 h-10 rounded-full "
-                src="https://source.unsplash.com/40x40/?portrait?3"
-              />
-              <img
-                alt=""
-                className="w-10 h-10 rounded-full "
-                src="https://source.unsplash.com/40x40/?portrait?4"
-              /> */}
+          
             </div>
           </div>
         </div>

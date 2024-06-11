@@ -14,7 +14,7 @@ const AllClass = () => {
   const firstPostIndex = lastPostIndex - postPerPage;
 
   const totalPages = Math.ceil(classes.length / postPerPage);
-  console.log("total ", totalPages);
+ 
 
   const pages = [];
 
@@ -23,12 +23,12 @@ const AllClass = () => {
   }
 
   const slicedClass = classes.slice(firstPostIndex, lastPostIndex);
-  console.log(pages);
+  
 
   const handlePrev = () => {
     if(currentPage - 1 > 0){
         setCurrentPage(currentPage - 1)
-        console.log('Hiiii');
+        
     }
   }
   const handleNext = () => {
@@ -41,12 +41,12 @@ const AllClass = () => {
   return (
     <div>
       <Helmet>
-        <title> Vite || All Class</title>
+        <title> FitnessSynced | All Class</title>
       </Helmet>
       <h2 className="text-3xl font-medium text-slate-500 text-center mb-12">
         See Our Latest Classes
       </h2>
-      <div className="grid grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-2">
         {slicedClass.map((item) => (
           <SingleClass key={item._id} item={item} />
         ))}

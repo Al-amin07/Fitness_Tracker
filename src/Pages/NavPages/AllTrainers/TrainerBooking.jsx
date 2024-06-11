@@ -66,8 +66,8 @@ const TrainerBooking = () => {
   return (
     <div>
       <h2 className="text-3xl font-semibold text-slate-700 mb-12 text-center">Get Started with Our Affordable Packages</h2>
-      <div className="flex gap-10">
-        <div className="shadow-xl p-6 w-[500px]">
+      <div className="flex flex-col-reverse lg:flex-row gap-10">
+        <div className="shadow-xl flex-1 p-6 w-[500px]">
           <h2 className="text-2xl font-medium ">
             Trainer Name : {trainer.full_name}
           </h2>

@@ -1,8 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import useAllClass from "../../Hooks/useAllClass";
+
 import { FaUserFriends } from "react-icons/fa";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Loading from "../../Loading/Loading";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+
+const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+
+
 
 const AdminDashBoard = () => {
    
@@ -16,6 +21,40 @@ const AdminDashBoard = () => {
     })
     console.log(stat);
     if(isLoading) return <Loading/>
+    // const { paymentCollection } = stat;
+
+    const getPath = (x, y, width, height) => {
+      return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
+      ${x + width / 2}, ${y}
+      C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
+      Z`;
+    };
+    
+    const TriangleBar = (props) => {
+      const { fill, x, y, width, height } = props;
+    
+      return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
+    };
+
+    const data = [
+      {
+        name: ' Newsletter Subscribers',
+        uv: stat?.uniqueSubsCount,
+        pv: 2400,
+        amt: 2400,
+      },
+      {
+        name: ' Total Paid Members',
+        uv: stat?.uniqueUserCount,
+        pv: 1398,
+        amt: 2210,
+      },
+    
+    ];
+    
+
+
+
     
   return (
     <div>
@@ -87,6 +126,89 @@ const AdminDashBoard = () => {
           </div>
         </div>
       </section>
+
+      <div className="flex flex-col lg:flex-row gap-5 mt-6">
+        {/* Chart */}
+        <div className="flex-1 ">
+        
+        <BarChart
+      width={500}
+      height={350}
+      data={data}
+      margin={{
+        top: 20,
+        right: 30,
+        left: 20,
+        bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis  />
+      <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={colors[index % 20]} />
+        ))}
+      </Bar>
+    </BarChart>
+
+        </div>
+        <div className="flex-1">
+          <h3 className="text-3xl font-semibold text-center mb-8">Recent Financial Activities : </h3>
+          <table
+          className="w-full text-left "
+          // cellspacing="0"
+        >
+          <tbody>
+            <tr className="shadow-lg border-b-2 ">
+              <th
+                scope="col"
+                className="h-12 px-3 text-lg font-medium  bg-white text-slate-700  border-0"
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                className="h-12 px-3 text-lg font-medium bg-white text-slate-700  border-0"
+              >
+                Email
+              </th>
+              <th
+                scope="col"
+                className="h-12 px-3 text-lg font-medium  bg-white text-slate-700  border-0"
+              >
+                Price
+              </th>
+              {/* <th
+                scope="col"
+                className="h-12 px-3 text-lg font-medium  stroke-slate-700 text-slate-700  border-0"
+              >
+                Transaction Id
+              </th> */}
+         
+              
+            </tr>
+            {
+              stat?.paymentsItem?.slice(0,6).map(item =>  <tr key={item._id} className="transition-colors duration-300 hover:bg-slate-50">
+        
+        <td className="h-12 px-6 text-sm transition bg-white shadow-md duration-300 border-0 border-b border-slate-200 stroke-slate-500 text-slate-500 ">
+                {item.name}
+              </td>
+              <td className="h-12 px-6 text-sm transition bg-white shadow-md duration-300 border-0 border-b border-slate-200 stroke-slate-500 text-slate-500 ">
+              {item.email}
+              </td>
+              <td className="h-12 px-6 text-sm transition bg-white shadow-md duration-300 border-0 border-b border-slate-200 stroke-slate-500 text-slate-500 ">
+               $ {item.price}
+              </td>
+          
+            </tr>)
+            }
+       
+           
+          </tbody>
+        </table>
+        </div>
+      </div>
     </div>
   );
 };

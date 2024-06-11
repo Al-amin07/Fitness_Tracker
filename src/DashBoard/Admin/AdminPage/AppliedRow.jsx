@@ -58,7 +58,7 @@ const AppliedRow = ({  item , refetch}) => {
     }
   return (
     <tr className="shadow-lg">
-      <td className="px-5 py-3 border-0 border-b  border-gray-200 bg-white text-sm">
+      <td className="px-5 py-3 border-0 border-b   border-gray-200 bg-white text-sm">
         <img
           className="h-12 w-12 rounded-full"
           src={item?.profile_image}

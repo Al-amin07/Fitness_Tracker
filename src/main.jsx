@@ -33,6 +33,8 @@ import AdminDashBoard from "./DashBoard/Admin/AdminDashBoard.jsx";
 import AdminRoute from "./PrivateRoute/AdminRoute.jsx";
 import TrainerRoute from "./PrivateRoute/TrainerRoute.jsx";
 import DiffDashBoard from "./DashBoard/Shared/DiffDashBoard.jsx";
+import SharedRoute from "./PrivateRoute/SharedRoute.jsx";
+import CommunityDetails from "./Pages/Home/CommunityDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/all-class",
         element: <AllClass />,
+      },
+      {
+       path: '/community-details/:id',
+       element: <CommunityDetails></CommunityDetails>
       },
       {
         path: "/trainer-details/:id",
@@ -136,7 +142,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'add-forum',
-        element: <AddForum/>
+        element: <SharedRoute><AddForum/></SharedRoute>
       },
       {
         path: 'add-slot',

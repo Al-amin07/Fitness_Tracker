@@ -1,8 +1,9 @@
 
 import moment from 'moment'
-
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 const SinglePost = ({item}) => {
-    const { name, email, user_image, image, description, role, time } = item;
+    const { name,  user_image, image, description,  time } = item;
     const realTime = moment(time).format('ddd HH.mm YYYY ')
   return (
     <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
@@ -15,7 +16,7 @@ const SinglePost = ({item}) => {
         />
       </figure>
       {/*  <!-- Body--> */}
-      <div className="p-6">
+      <div className="p-3">
         <header className="mb-4 flex gap-4">
           <a
             href="#"
@@ -38,19 +39,25 @@ const SinglePost = ({item}) => {
           </div>
         </header>
         <p>
-          Day to day life operates outside, so get ready to see the beach become
-          the living room, and the street the kitchen. A simple, yet beautiful,
-          way of life that explains the sunny outlook.
+   {
+    description.slice(0,80)
+   }....
         </p>
       </div>
       {/*  <!-- Action base sized link button --> */}
       <div className="flex justify-end gap-2 p-2 pt-0">
-        <button className="inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
+        <Link to={`/community-details/${item._id}`}>
+        <button className="inline-flex  h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
           <span>Read more</span>
         </button>
+        </Link>
       </div>
     </div>
   );
 };
+
+SinglePost.propTypes = {
+  item: PropTypes.object
+}
 
 export default SinglePost;

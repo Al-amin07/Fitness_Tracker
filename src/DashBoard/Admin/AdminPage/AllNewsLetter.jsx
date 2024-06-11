@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 import "./AllNew.css";
+import { Helmet } from "react-helmet";
 const AllNewsLetter = () => {
   const axiosSecure = useAxiosSecure();
   const { data: subscribers = [] } = useQuery({
@@ -15,6 +16,9 @@ const AllNewsLetter = () => {
 
   return (
     <div>
+         <Helmet>
+        <title> Admin | Subsceiber</title>
+      </Helmet>
       <h2
         className="text-4xl font-semibold text-center mb-6
           "
@@ -22,52 +26,7 @@ const AllNewsLetter = () => {
         All New Subscribers{" "}
       </h2>
       <div>
-        {/* <table>
-          <thead>
-            <tr>
-              <th
-                scope="col"
-                className="px-5 py-3 shadow-2xl bg-white    text-gray-800  text-left text-lg uppercase font-medium"
-              ></th>
-              <th
-                scope="col"
-                className="px-5 py-3 shadow-2xl bg-white   text-gray-800  text-left text-lg uppercase font-medium"
-              >
-                Full Name
-              </th>
-              <th
-                scope="col"
-                className="px-5 py-3 shadow-2xl bg-white  text-gray-800  text-left text-lg uppercase font-medium"
-              >
-                Email
-              </th>
-              <th
-                scope="col"
-                className="px-5 py-3 shadow-2xl bg-white  text-gray-800  text-left text-lg uppercase font-medium"
-              >
-                Years Of Experience
-              </th>
-
-              <th
-                scope="col"
-                className="px-5 py-3 shadow-2xl bg-white border-none  text-gray-800  text-left text-lg uppercase font-medium"
-              >
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {subscribers?.map((item, index) => (
-             <tr key={item._id}>
-             <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Name</th>
-             <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Title</th>
-             <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Company</th>
-             <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Role</th>
-             <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Username</th>
-           </tr>
-            ))}
-          </tbody>
-        </table> */}
+      
 
         <table
           className="w-full text-left border border-separate rounded border-slate-200"

@@ -19,7 +19,7 @@ const TrainerInfo = ({ trainer }) => {
   return (
     
 
-    <div className="flex px-16 gap-8">
+    <div className="flex flex-col lg:flex-row px-4 lg:px-16 gap-8">
       <div className="overflow-hidden  rounded-2xl flex-1 bg-white  shadow-xl shadow-slate-200">
         <div className="flex gap-4">
           <figure className="p-6 h-52 w-52   pb-0">

@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
 
-  const { login, githubLogin, googleLogin } = useAuth();
+  const { login, githubLogin, googleLogin, saveUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
@@ -16,6 +16,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
     .then(result => {
+      saveUser(result.user)
       console.log(result.user);
       Swal.fire({
         position: "top-end",
@@ -31,6 +32,7 @@ const Login = () => {
   const handleGithubLogin = () => {
     githubLogin()
     .then(result => {
+      saveUser(result.user)
       console.log(result.user);
       Swal.fire({
         position: "top-end",

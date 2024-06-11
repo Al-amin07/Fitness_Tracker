@@ -67,7 +67,7 @@ const TrainerDetails = () => {
   return (
     <div>
    
-      <div>
+      <div className="">
       
         <div >
             <TrainerInfo trainer={trainer}/>
