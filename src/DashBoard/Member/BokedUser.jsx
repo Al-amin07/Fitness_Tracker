@@ -23,11 +23,12 @@ const BokedUser = () => {
         }
     })
     console.log(totalBooked);
-    const { trainerImage, trainerName, trainerEmail, classess, slots,available_day, details} = totalBooked  ;
+    const { trainerImage, trainerName, trainerEmail, slots,available_day, details} = totalBooked  ;
     if(isLoading) return <Loading></Loading>
     return (
        <div className="">
-         <div className="w-4/6 mx-auto border rounded-md p-6">
+         {
+            Object.keys(totalBooked).length === 0 ? <h1 className="text-3xl font-medium text-center">You Dont Booked Yet</h1> : <div className="w-4/6 mx-auto border rounded-md p-6">
             <div className="flex gap-4 items-center mb-5">
                 <img className="h-24 w-24 rounded-full" src={trainerImage} alt="" />
                 <div>
@@ -44,7 +45,7 @@ const BokedUser = () => {
                 <ul className="flex gap-2">
                     <li className="text-lg">Available Days : </li>
                     {
-                        available_day.map((item, ind) => <li className="text-lg font-semibold" key={ind}>{item.label}</li>)
+                        available_day?.map((item, ind) => <li className="text-lg font-semibold" key={ind}>{item.label}</li>)
                     }
                 </ul>
 
@@ -52,7 +53,7 @@ const BokedUser = () => {
                     <h2 className="text-xl font-semibold mb-3">Slots : </h2>
                     <ul className="space-y-5">
                         {
-                            slots.map((item, index) => <li className="flex gap-8 items-center" key={index}><span className="bg-cyan-50 text-cyan-500 py-2 px-3 rounded-full font-bold">{item.slotName + " " + item.slotTime} hours</span>
+                            slots?.map((item, index) => <li className="flex gap-8 items-center" key={index}><span className="bg-cyan-50 text-cyan-500 py-2 px-3 rounded-full font-bold">{item.slotName + " " + item.slotTime} hours</span>
                             <span>
                                 <span className="text-bg ">Classess : </span>
                                 {item?.classess?.map((ite, ind) => <span
@@ -71,6 +72,8 @@ const BokedUser = () => {
                     />
                 </div>
         </div>
+        }
+         
        </div>
     );
 };

@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 
 import auth from "../Firebase/Firebase.config";
-import axios from "axios";
+// import axios from "axios";
 import useAxiosCommon from "../Hooks/useAxiosCommon";
 
 export const AuthContext = createContext(null);
@@ -70,9 +70,10 @@ const AuthProvider = ({ children }) => {
       status: "verified",
       time: Date.now(),
     };
+  
     console.log(newUser);
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/user`,
+    const { data } = await axiosCommon.post(
+      `/user`,
       newUser
     );
     console.log(data);
