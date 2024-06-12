@@ -62,37 +62,37 @@ const ManageSlot = () => {
             <tr>
               <th
                 scope="col"
-                className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
+                className="h-12 px-6 text-lg font-medium border-0 border-b  border-slate-200 stroke-slate-700 text-slate-700 bg-slate-100"
               >
                 Serial
               </th>
               <th
                 scope="col"
-                className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
+                className="h-12 px-6 text-lg font-medium border-0 border-b  border-slate-200 stroke-slate-700 text-slate-700 bg-slate-100"
               >
                 Slot Name
               </th>
               <th
                 scope="col"
-                className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
+                className="h-12 px-6 text-lg font-medium border-0 border-b  border-slate-200 stroke-slate-700 text-slate-700 bg-slate-100"
               >
                 Duration
               </th>
               <th
                 scope="col"
-                className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
+                className="h-12 px-6 text-lg font-medium border-0 border-b  border-slate-200 stroke-slate-700 text-slate-700 bg-slate-100"
               >
                 Status
               </th>
               <th
                 scope="col"
-                className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
+                className="h-12 px-6 text-lg font-medium border-0 border-b  border-slate-200 stroke-slate-700 text-slate-700 bg-slate-100"
               >
                 Booking Details
               </th>
               <th
                 scope="col"
-                className="h-12 px-6 text-lg font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"
+                className="h-12 px-6 text-lg font-medium border-0 border-b  border-slate-200 stroke-slate-700 text-slate-700 bg-slate-100"
               >
                 Delete Slot
               </th>

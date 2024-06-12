@@ -7,112 +7,121 @@ import Loading from "../../Loading/Loading";
 import useAllClass from "../../Hooks/useAllClass";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
-
-  const slot = [
-    { value: 'Morning', label: 'Morning'},
-    { value: 'After noon', label: 'After noon'},
-    { value: 'Evening', label: 'Evening'},
-    { value: 'Night', label: 'Night'},
-  ]
+const slot = [
+  { value: "Morning", label: "Morning" },
+  { value: "After noon", label: "After noon" },
+  { value: "Evening", label: "Evening" },
+  { value: "Night", label: "Night" },
+];
 
 const AddSlot = () => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [classes] = useAllClass();
+  const [selectedSkills, setSelectedSkills] = useState([]);
+  console.log(user);
+  const { data: trainer = {}, isLoading } = useQuery({
+    queryKey: ["slots", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/trainers/${user?.email}`);
+      return data;
+    },
+  });
+  console.log(trainer);
 
-    const axiosSecure = useAxiosSecure();
-    const { user } = useAuth();
-    const navigate = useNavigate();
-    const [classes] = useAllClass();
-    const [selectedSkills, setSelectedSkills] = useState([]);
-    console.log(user);
-    const {  data: trainer = {},  isLoading } = useQuery({
-        queryKey: ['slots', user?.email],
-        queryFn: async () => {
-            const { data } = await axiosSecure.get(`/trainers/${user?.email}`);
-            return data 
-        }
-    })
-    console.log(trainer);
-  
-    const { _id,full_name,years_of_experience,age,available_day, profile_image  ,time_in_day  } = trainer;
-    console.log(available_day);
-    const [selectedTimes, setSelectedTimes] = useState('')
-  
-    const handleCheckboxChange = (value, isChecked) => {
-      const newSelectedValues = isChecked
-        ? [...selectedSkills, value] // Add value if checked
-        : selectedSkills.filter((item) => item !== value); // Remove value if unchecked
-      setSelectedSkills(newSelectedValues);
-      console.log(newSelectedValues);
+  const {
+    _id,
+    full_name,
+    years_of_experience,
+    age,
+    available_day,
+    profile_image,
+    time_in_day,
+  } = trainer;
+  console.log(available_day);
+  const [selectedTimes, setSelectedTimes] = useState("");
+
+  const handleCheckboxChange = (value, isChecked) => {
+    const newSelectedValues = isChecked
+      ? [...selectedSkills, value] // Add value if checked
+      : selectedSkills.filter((item) => item !== value); // Remove value if unchecked
+    setSelectedSkills(newSelectedValues);
+    console.log(newSelectedValues);
+  };
+
+  const handleSelectTime = (selectedOptions) => {
+    setSelectedTimes(selectedOptions);
+    console.log(selectedOptions);
+  };
+
+  // Submit Function
+
+  const handleSlot = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const timesInDay = form.slotTime.value;
+    if (timesInDay > time_in_day) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: `Your have ${time_in_day} hours left`,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      return;
+    }
+    const newSlot = {
+      slotName: selectedTimes.label,
+      slotTime: timesInDay,
+      classess: selectedSkills,
     };
-   
-    const handleSelectTime = (selectedOptions) => {
-        setSelectedTimes(selectedOptions);
-        console.log(selectedOptions);
-      };
+    const classDetails = {
+      trainerFullName: full_name,
+      trainerId: _id,
+      trainerImage: profile_image,
+      selectedClassess: selectedSkills,
+    };
+    console.log(newSlot, classDetails);
+    const { data } = await axiosSecure.put("/trainer/class", {
+      newSlot,
+      classDetails,
+    });
+    if (data.modifiedCount > 0) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Slot  added Successfylly!!!`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/dashboard/manage-slot");
+    }
+  };
+  console.log(trainer);
+  if (isLoading) return <Loading />;
+  return (
+    <div>
+      <Helmet>
+        <title>Trainer | AddForum</title>
+      </Helmet>
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center mb-8">Add New Slot</h2>
 
-      // Submit Function
-
-      const handleSlot  = async e => {
-        e.preventDefault();
-        const form = e.target;
-        const timesInDay = form.slotTime.value;
-        if(timesInDay > time_in_day){
-          Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: `Your have ${time_in_day} hours left`,
-            showConfirmButton: false,
-            timer: 1000
-          });
-          return;
-        }
-        const newSlot = {
-          
-          slotName : selectedTimes.label,
-          slotTime: timesInDay,
-          classess: selectedSkills
-        }
-        const classDetails = {
-          trainerFullName:full_name,
-          trainerId: _id,
-          trainerImage: profile_image,
-          selectedClassess : selectedSkills
-        }
-        console.log(newSlot, classDetails);
-        const { data } = await axiosSecure.put('/trainer/class', {newSlot, classDetails})
-        if(data.modifiedCount > 0){
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `Slot  added Successfylly!!!`,
-            showConfirmButton: false,
-            timer: 1500
-          });
-          navigate('/dashboard/manage-slot')
-        }
-      }
-      console.log(trainer);
-      if(isLoading) return <Loading/>
-    return (
-        <div>
-            <h2 className="text-4xl font-semibold text-center mb-8">Add New Slot</h2>
-          
-            <form onSubmit={handleSlot}  className=" p-12 bg-cyan-50">
+      <form onSubmit={handleSlot} className=" p-4 md:p-8 lg:p-12 bg-cyan-50">
         <div className="grid grid-cols-6 gap-4 ">
-
-
           <div className="col-span-full sm:col-span-3">
-          <label className="text-lg font-medium text-slate-600 mb-2">
+            <label className="text-lg font-medium text-slate-600 mb-2">
               Full Name
             </label>
             <input
               id="fullname"
               type="text"
               name="fullname"
-            //   required
-            defaultValue={full_name}
-            disabled
-
+              //   required
+              defaultValue={full_name}
+              disabled
               placeholder="Full Name"
               className="w-full border px-4 py-3 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
             />
@@ -144,8 +153,7 @@ const AddSlot = () => {
               name="age"
               required
               defaultValue={age}
-            disabled
-
+              disabled
               placeholder="Class Name"
               className="w-full border px-4 py-3 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
             />
@@ -155,26 +163,27 @@ const AddSlot = () => {
             <label className="text-lg font-medium  text-slate-600 ">
               Upload Image
             </label>
-         <div className="flex gap-1 items-center bg-white border-2 border-dotted">
-         <input
-              className=" bg-white py-2 px-2 "
-              type="file"
-              name="image"
-              required
-              disabled
-              id=""
-            />
-            <div>
-              <img className="h-10 w-10 rounded-full" src={profile_image} alt="" />
+            <div className="flex gap-1 items-center bg-white border-2 border-dotted">
+              <input
+                className=" bg-white py-2 px-2 "
+                type="file"
+                name="image"
+                required
+                disabled
+                id=""
+              />
+              <div>
+                <img
+                  className="h-10 w-10 rounded-full"
+                  src={profile_image}
+                  alt=""
+                />
+              </div>
             </div>
-         </div>
           </div>
 
-          
-
-
-             {/* Experience */}
-             <div className="col-span-full sm:col-span-3">
+          {/* Experience */}
+          <div className="col-span-full sm:col-span-3">
             <label className="text-lg font-medium text-slate-600 mb-2">
               Experience
             </label>
@@ -184,20 +193,18 @@ const AddSlot = () => {
               required
               placeholder=""
               defaultValue={years_of_experience}
-            disabled
-
+              disabled
               className="w-full border px-4 py-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
             />
           </div>
 
-
-              {/*  Available Days */}
-              <div className=" col-span-full sm:col-span-3">
+          {/*  Available Days */}
+          <div className=" col-span-full sm:col-span-3">
             <label className="text-lg font-medium text-slate-600 ">
               Available Days
             </label>
             <Select
-            //   onChange={handleSelectChange}
+              //   onChange={handleSelectChange}
               className=""
               defaultValue={available_day}
               closeMenuOnSelect={false}
@@ -208,7 +215,7 @@ const AddSlot = () => {
 
           <div className="col-span-full sm:col-span-3">
             <label className="text-lg font-medium text-slate-600 mb-2">
-             Slot Time in Hour
+              Slot Time in Hour
             </label>
             <input
               type="number"
@@ -216,17 +223,11 @@ const AddSlot = () => {
               required
               placeholder="example : 1"
               // defaultValue={years_of_experience}
-         
 
               className="w-full border px-4 py-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
             />
           </div>
 
-        
-     
-
-       
-       
           {/* Slot Name */}
           <div className=" col-span-full sm:col-span-3">
             <label className="text-lg font-medium text-slate-600 ">
@@ -236,41 +237,36 @@ const AddSlot = () => {
               onChange={handleSelectTime}
               className=""
               closeMenuOnSelect={true}
-              
               options={slot}
             />
           </div>
 
-                {/* Skills */}
-                <div className=" flex items-center col-span-full sm:col-span-6">
+          {/* Skills */}
+          <div className=" flex items-center col-span-full sm:col-span-6">
             <div>
               <label className="text-lg font-medium text-slate-600 ">
                 Classes :
               </label>
-            
-              <div className=" grid grid-cols-6 gap-1">
-                {
-                  classes.map((cla, ind) => <div className="flex gap-1 items-center" key={ind}>
-                   <input
-                type="checkbox"
-                onChange={(e) =>
-                  handleCheckboxChange(e.target.value, e.target.checked)
-                }
-                className="ml-2"
-                name="skill"
-                id="yoga"
-                value={cla.className}
-              />
-              {cla.className}
-                  </div>)
-                }
+
+              <div className=" grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 md:gap-1">
+                {classes.map((cla, ind) => (
+                  <div className="flex gap-1 items-center" key={ind}>
+                    <input
+                      type="checkbox"
+                      onChange={(e) =>
+                        handleCheckboxChange(e.target.value, e.target.checked)
+                      }
+                      className="ml-2"
+                      name="skill"
+                      id="yoga"
+                      value={cla.className}
+                    />
+                    {cla.className}
+                  </div>
+                ))}
               </div>
-             
             </div>
           </div>
-
-     
-          
         </div>
 
         {/* Button */}
@@ -280,8 +276,8 @@ const AddSlot = () => {
           </button>
         </div>
       </form>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default AddSlot;

@@ -9,47 +9,46 @@ const AddForum = () => {
   const { user } = useAuth();
   const [role] = useRole();
   const axiosSecure = useAxiosSecure();
-  const handleForum = async e => {
+  const handleForum = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const image =  await GetPhoto(form.image.files[0]);
+    const image = await GetPhoto(form.image.files[0]);
     const description = form.details.value;
     // console.log(image, description);
     const post = {
-        name: user.displayName,
-        email: user?.email,
-        user_image: user?.photoURL,
-        role,
-        image,
-        description,
-        time: new Date()
-        
-    }
+      name: user.displayName,
+      email: user?.email,
+      user_image: user?.photoURL,
+      role,
+      image,
+      description,
+      time: new Date(),
+    };
     console.log(post);
-    const { data } = await axiosSecure.post('/community', post)
+    const { data } = await axiosSecure.post("/community", post);
     console.log(data);
-    if(data.insertedId){
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `Post Added Successfully`,
-            showConfirmButton: false,
-            timer: 1000
-          });
+    if (data.insertedId) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `Post Added Successfully`,
+        showConfirmButton: false,
+        timer: 1000,
+      });
 
-          form.reset();
+      form.reset();
     }
-  }
+  };
 
   return (
-    <div>
-          <Helmet>
-        <title> {role.charAt(0).toUpperCase() + role.slice(1)} | AddForum</title>
+    <div className="">
+      <Helmet>
+        <title> {role[0].toUpperCase() + role.slice(1)} | AddForum</title>
       </Helmet>
-      <h1 className="text-4xl font-semibold text-center mb-8">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center mb-8">
         Add a Community Forum Post
       </h1>
-      <form onSubmit={handleForum} className="px-20 bg-cyan-50 py-8">
+      <form onSubmit={handleForum} className="px-4 md:px-12 lg:px-20 bg-cyan-50 py-8">
         <div className="flex gap-4 mb-5">
           <img
             className="h-14 w-14 rounded-full "
@@ -72,7 +71,6 @@ const AddForum = () => {
             type="file"
             name="image"
             required
-        
             className="w-full bg-white border px-3 py-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
           />
         </div>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa6";
 const SingleTrainer = ({trainer}) => {
-    const {full_name, email, age, years_of_experience,profile_image, slots, skills, details, Education } = trainer
+    const {full_name,  years_of_experience,profile_image, slots} = trainer
     return (
      
   

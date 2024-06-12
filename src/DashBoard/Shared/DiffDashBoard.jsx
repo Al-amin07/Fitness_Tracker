@@ -10,7 +10,7 @@ const DiffDashBoard = () => {
   return (
     <div>
       <Helmet>
-        <title> {role.charAt(0).toUpperCase() + role.slice(1)} | DashBoard</title>
+        <title> {role[0].toUpperCase() + role.slice(1)} | DashBoard</title>
       </Helmet>
       {role === "admin" && <AdminDashBoard></AdminDashBoard>}
       {role === "trainer" && <TrainerDashBoard></TrainerDashBoard>}

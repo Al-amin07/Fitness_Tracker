@@ -47,7 +47,7 @@ const FeedbackModal = ({ closeModal, isOpen, feedback }) => {
 
                 <div className="my-4">
 
-                    <h2 className="text-lg font-medium">{feedback}</h2>
+                    <h2 className="text-lg ">{feedback}</h2>
                 </div>
 
                 <div className="flex mt-2 justify-end">

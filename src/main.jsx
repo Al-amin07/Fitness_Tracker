@@ -35,11 +35,13 @@ import TrainerRoute from "./PrivateRoute/TrainerRoute.jsx";
 import DiffDashBoard from "./DashBoard/Shared/DiffDashBoard.jsx";
 import SharedRoute from "./PrivateRoute/SharedRoute.jsx";
 import CommunityDetails from "./Pages/Home/CommunityDetails.jsx";
+import Error from "./Layout/Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <Error/>,
     children: [
       {
         path: "/",

@@ -7,7 +7,7 @@ const DashBoard = () => {
       <div className="">
         <Sidebar />
       </div>
-      <div className=" lg:ml-[320px] mt-16 w-full pr-24">
+      <div className=" lg:ml-[320px] mt-16 w-full pr-10 md:pr-12 lg:pr-24">
         <Outlet />
       </div>
     </div>

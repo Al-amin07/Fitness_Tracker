@@ -11,6 +11,7 @@ const TrainerInfo = ({ trainer }) => {
     profile_image,
     slots,
     skills,
+    available_day,
     // Education,
     details,
   } = trainer;
@@ -70,8 +71,15 @@ const TrainerInfo = ({ trainer }) => {
           </header>
         </div>
       </div>
+
       <div className=" flex-1 border rounded-2xl p-6">
         <h2 className="text-3xl font-semibold mb-6">Click on the slot for booking</h2>
+
+        <h2 className="  my-3">
+          Days : {
+            available_day?.map((item, index) => <span className="font-medium" key={index}>{item.label + '  '} </span>)
+          }
+        </h2>
         <h2 className="text-2xl font-semibold  mb-3 text-cyan-700">
           Available Slot : {" "}
         </h2>

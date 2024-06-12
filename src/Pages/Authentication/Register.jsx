@@ -7,15 +7,16 @@ import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GetPhoto from "../../Components/GetPhoto";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
-  const { register, setLoading,   saveUser, logOut } = useAuth();
+  const { register, setLoading, saveUser, logOut } = useAuth();
 
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    
+
     const form = e.target;
     const name = form.username.value;
     const photo = form.photo.files[0];
@@ -36,19 +37,17 @@ const Register = () => {
     }
     // const formData = new FormData();
     // formData.append("image", photo);
-  
+
     try {
-  
       // const { data } = await axios.post(
       //   `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB}`,
       //   formData
       // );
-      const image = await GetPhoto(photo)
+      const image = await GetPhoto(photo);
       console.log(image);
-     
+
       // fun(name, data.data.display_url);
 
-    
       register(email, password).then((result) => {
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -56,7 +55,7 @@ const Register = () => {
         })
           .then(() => {
             console.log(result.user);
-            saveUser(result.user)
+            saveUser(result.user);
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -64,17 +63,13 @@ const Register = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-            logOut()
+            logOut();
             navigate("/login");
           })
           .catch((error) => {
             console.log(error);
           });
-       
       });
-
-      
-      
     } catch (err) {
       console.log(err);
       setLoading(false);
@@ -82,6 +77,9 @@ const Register = () => {
   };
   return (
     <div className="w-full bg-cyan-50 mx-auto border max-w-md p-8 space-y-3 rounded-xl ">
+      <Helmet>
+        <title> FitnessSynced | Register</title>
+      </Helmet>
       <h1 className="text-2xl font-bold text-center">Register Now!!!</h1>
       <form onSubmit={handleRegister} className="space-y-6">
         <div className="space-y-1 text-sm">
@@ -135,15 +133,15 @@ const Register = () => {
           />
         </div>
         <button className="block w-full p-3 text-center rounded-sm bg-cyan-600 text-white">
-          Sign in
+          Sign Up
         </button>
       </form>
       <div className="flex items-center pt-4 space-x-1">
         <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
-      
+
         <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
       </div>
-    
+
       <p className="text-sm text-center sm:px-6 dark:text-gray-600">
         Already have an account?
         <Link

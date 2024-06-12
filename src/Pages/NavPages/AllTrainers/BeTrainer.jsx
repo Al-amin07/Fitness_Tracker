@@ -2,10 +2,12 @@ import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 
 import GetPhoto from "../../../Components/GetPhoto";
-import useAxiosCommon from "../../../Hooks/useAxiosCommon";
+// import useAxiosCommon from "../../../Hooks/useAxiosCommon";
 import Swal from "sweetalert2";
 
 import Select from "react-select";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const fitnessSkills = [
   { value: "hiit", label: "HIIT" },
@@ -34,7 +36,9 @@ const BeTrainer = () => {
   const [selectedValues, setSelectedValues] = useState([]);
   
   const [selectedSkills, setSelectedSkills] = useState([]);
-  const axiosCommon = useAxiosCommon();
+  const navigate = useNavigate();
+  
+  const axiosSecure = useAxiosSecure()
   // const [classes,, isLoading] = useAllClass();
 
   const handleSelectChange = (selectedOptions) => {
@@ -75,7 +79,7 @@ const BeTrainer = () => {
     console.log(newData);
 
     try{
-        const { data } = await axiosCommon.post('/applied-trainers', newData)
+        const { data } = await axiosSecure.post('/applied-trainers', newData)
         console.log(data);
         if(data.insertedId){
             Swal.fire({
@@ -83,8 +87,9 @@ const BeTrainer = () => {
                 icon: "success",
                 title: "Please wait for Admin Approval",
                 showConfirmButton: false,
-                timer: 1000
+                timer: 1500
               });
+              navigate('/all-trainer')
         }
     }catch(err){
         console.log(err);

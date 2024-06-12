@@ -14,20 +14,20 @@ const SlotRow = ({ index, item, handleDelete }) => {
   // }
   console.log(item);
   return (
-    <tr className="transition-colors duration-300 hover:bg-slate-50">
-      <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+    <tr className="transition-colors duration-300  hover:bg-slate-50">
+      <td className="h-12 px-6 text-sm  transition bg-white duration-300 border-0 border-b  border-slate-200 stroke-slate-500 text-slate-500 ">
         {index + 1}
       </td>
-      <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+      <td className="h-12 px-6 bg-white text-sm transition duration-300 border-0 border-b  border-slate-200 stroke-slate-500 text-slate-500 ">
         {item.slotName}
       </td>
-      <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+      <td className="h-12 px-6 bg-white text-sm transition duration-300 border-0 border-b  border-slate-200 stroke-slate-500 text-slate-500 ">
         {item.slotTime} Hours
       </td>
-      <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+      <td className="h-12 px-6 bg-white text-sm transition duration-300 border-0 border-b  border-slate-200 stroke-slate-500 text-slate-500 ">
         {item.bookingDetails ? "Booked" : "Available"}
       </td>
-      <td className="h-12 px-6 text-bg transition duration-300 border-l first:border-l-0 border-slate-200 ">
+      <td className="h-12 px-6 bg-white text-bg transition duration-300 border-0 border-b  border-slate-200 ">
         {item.bookingDetails ? (
           <button
             onClick={() => setIsOpen(true)}
@@ -47,7 +47,7 @@ const SlotRow = ({ index, item, handleDelete }) => {
         />
       </td>
 
-      <td className="h-12 text-center px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+      <td className="h-12 text-center bg-white px-6 text-sm transition duration-300 border-0 border-b  border-slate-200 stroke-slate-500 text-slate-500 ">
         <>
           {/*<!-- Component: Base outline button with icon  --> */}
           <button
