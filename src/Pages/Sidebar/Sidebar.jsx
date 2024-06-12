@@ -5,11 +5,20 @@ import Admin from "../../DashBoard/Admin/Admin";
 import Member from "../../DashBoard/Member/Member";
 import Trainer from "../../DashBoard/Trainer/Trainer";
 import './Sidebar.css'
-
+import { IoIosLogOut } from "react-icons/io";
+import useAuth from "../../Hooks/useAuth";
 
 const Sidebar = () => {
+  const { logOut } = useAuth();
+
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
     const [role] = useRole();
+    const handleLogout = () => {
+      logOut()
+      .then(() => {
+        console.log('hello');
+      })
+    }
     return (
         <div className="">
      
@@ -58,7 +67,7 @@ const Sidebar = () => {
             aria-label="side navigation"
             className="flex-1  divide-y px-3 divide-slate-100 overflow-auto"
           >
-            <div>
+            <div className="">
               <ul className="flex flex-1 flex-col gap-1 py-3 ">
                 <li  className="px-3">
                   
@@ -92,98 +101,49 @@ const Sidebar = () => {
                 {role === "admin" && <Admin />}
               </ul>
             </div>
-            <div>
+            <div className="">
               <ul className="flex flex-1 flex-col gap-1 py-3">
-                <li className="px-3">
-                  <Link
-                    to="/"
-                    href="#"
-                    className="flex border-2 items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
-                  >
+                
+               {
+                (role === 'admin' || role === 'trainer') &&  <li  className="px-3">
+                  
+                <NavLink to='profile' end  className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-200 hover:text-cyan-700 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-700 ">
+                  <div className="flex items-center self-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="h-6 w-6"
+                      aria-label="Dashboard icon"
+                      role="graphics-symbol"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                    Profile
+                  </div>
+                </NavLink>
+              </li>
+               }
+               <li  className="px-3">
+                  
+                  <button onClick={handleLogout} className="flex w-full items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-200 hover:text-cyan-700 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-700 ">
                     <div className="flex items-center self-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="h-6 w-6"
-                        aria-label="Dashboard icon"
-                        role="graphics-symbol"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-                        />
-                      </svg>
+                     <IoIosLogOut className="text-2xl"/>
                     </div>
                     <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                      Documents
+                      Log Out
                     </div>
-                  </Link>
+                  </button>
                 </li>
-                <li className="px-3">
-                  <a
-                    href="#"
-                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
-                  >
-                    <div className="flex items-center self-center ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="h-6 w-6"
-                        aria-label="Dashboard icon"
-                        role="graphics-symbol"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                      Media & files
-                    </div>
-                  </a>
-                </li>
-                <li className="px-3">
-                  <a
-                    href="#"
-                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
-                  >
-                    <div className="flex items-center self-center ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="h-6 w-6"
-                        aria-label="Dashboard icon"
-                        role="graphics-symbol"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                      Backups
-                    </div>
-                  </a>
-                </li>
+               
               </ul>
             </div>
           </nav>

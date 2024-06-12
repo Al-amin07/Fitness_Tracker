@@ -37,6 +37,7 @@ import SharedRoute from "./PrivateRoute/SharedRoute.jsx";
 import CommunityDetails from "./Pages/Home/CommunityDetails.jsx";
 import Error from "./Layout/Error.jsx";
 import BokedUser from "./DashBoard/Member/BokedUser.jsx";
+import Balance from "./DashBoard/Admin/AdminPage/Balance.jsx";
 
 const router = createBrowserRouter([
   {
@@ -136,6 +137,10 @@ const router = createBrowserRouter([
       {
         path: "balance",
         element: <AdminRoute><AllNewsLetter /></AdminRoute>,
+      },
+      {
+        path: 'balances',
+        element: <AdminRoute><Balance/></AdminRoute>
       },
       // Trainer Page
       {

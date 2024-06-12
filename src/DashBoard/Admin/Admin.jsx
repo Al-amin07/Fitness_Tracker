@@ -1,6 +1,7 @@
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import { FaRegNewspaper } from "react-icons/fa6";
+import { MdOutlinePayment } from "react-icons/md";
 
 const Admin = () => {
   return (
@@ -96,6 +97,17 @@ const Admin = () => {
           <IoMdAdd className="text-xl" />
           <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
             Add Forum
+          </div>
+        </NavLink>
+      </li>
+      <li className="px-3">
+        <NavLink
+          to="balances"
+          className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
+        >
+          <MdOutlinePayment className="text-xl" />
+          <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+            Balance
           </div>
         </NavLink>
       </li>

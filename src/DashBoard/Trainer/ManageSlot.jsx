@@ -53,7 +53,7 @@ const ManageSlot = () => {
     if(isLoading) return <Loading/>
     return (
         <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-8">Manage Your Slot</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center mb-8">Manage Your Slot</h2>
             <table
           className="w-full text-left border border-separate rounded border-slate-200"
           cellspacing="0"

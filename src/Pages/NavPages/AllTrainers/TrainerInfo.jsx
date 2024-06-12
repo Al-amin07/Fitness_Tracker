@@ -91,7 +91,7 @@ const TrainerInfo = ({ trainer }) => {
           
             className="inline-flex h-10 w-full flex-1 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded bg-cyan-100 px-5 text-sm font-medium tracking-wide text-cyan-500 transition duration-300 hover:bg-cyan-100 hover:text-cyan-600 focus:bg-cyan-200 focus:text-cyan-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-cyan-300 disabled:bg-cyan-100 disabled:text-cyan-400 disabled:shadow-none"
           >
-            {item.slotName + '  ' + item.slotTime + 'Hour'}
+            {item.slotName + '  ' + item.slotTime + ' hour'}
           </button>
             </Link>
           ))}
