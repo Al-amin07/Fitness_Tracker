@@ -36,6 +36,7 @@ import DiffDashBoard from "./DashBoard/Shared/DiffDashBoard.jsx";
 import SharedRoute from "./PrivateRoute/SharedRoute.jsx";
 import CommunityDetails from "./Pages/Home/CommunityDetails.jsx";
 import Error from "./Layout/Error.jsx";
+import BokedUser from "./DashBoard/Member/BokedUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -158,6 +159,10 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <PrivateRoute><Profile/></PrivateRoute>
+      },
+      {
+        path: 'booked-user',
+        element: <PrivateRoute><BokedUser/></PrivateRoute>
       }
     ],
   },

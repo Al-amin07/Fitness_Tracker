@@ -4,9 +4,10 @@ import SingleCommunity from "./SingleCommunity";
 import { Helmet } from "react-helmet";
 import Loading from "../../../Loading/Loading";
 import { useState } from "react";
+// import useAuth from "../../../Hooks/useAuth";
 
 const Community = () => {
-
+// const { user } = useAuth();
  const axiosCommon = useAxiosCommon();
   const { data: communitys = [], isLoading } = useQuery({
     queryKey: ["community"],
@@ -64,6 +65,8 @@ const Community = () => {
           <SingleCommunity key={item._id} item={item} />
         ))}
       </div>
+
+
       <div className="mt-10 flex justify-center space-x-1 dark:text-gray-800">
         <button
           title="previous"

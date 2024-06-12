@@ -10,8 +10,8 @@ Currently, two official plugins are available:
 
 Website Name : Fitness Synced
 
-Admin UserName : 
-Admin Email : 
+Admin UserName : Alamin_75
+Admin Email : alsujon2001@gmail.com
 Admin Password : Al1234
 
 Live Link : https://fitness-b8a5d.web.app/

@@ -31,9 +31,10 @@ const SinglePost = ({item}) => {
               className="max-w-full rounded-full"
             />
           </a>
+          {/**/}
           <div>
             <h3 className="text-xl font-medium text-slate-700">
-              In the urban Jungle
+              In Our Fitness Club
             </h3>
             <p className="text-sm text-slate-400"> By {name}, {realTime}</p>
           </div>

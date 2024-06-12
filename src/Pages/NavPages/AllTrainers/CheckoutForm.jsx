@@ -92,14 +92,28 @@ const CheckoutForm = ({ price, closeModal, classes, slot, trainer, slotIndex }) 
       slot: slot,
       slotIndex
     }
+
+    const userBooked = {
+      userEmail: user?.email,
+      trainerName: trainer?.full_name,
+      trainerEmail : trainer?.email,
+      trainerImage : trainer?.profile_image,
+      classes : trainer?.slots[slotIndex].classess,
+      slotIndex,
+      slots: trainer?.slots,
+      available_day: trainer?.available_day,
+      details: trainer?.details
+    }
+
     console.log(trainer);
     
     // console.log(bookedDetails);
-    const { data } = await axiosSecure.post("/payments", {payment, bookedDetails, trainer});
+    const { data } = await axiosSecure.post("/payments", {payment, bookedDetails, trainer, userBooked});
     console.log(data);
     // const { data: trainerData } = await axiosSecure.put('/payments', {trainer, bookedDetails})
     // console.log(data, trainerData);
-     const {paymentResult, result} = data;
+    // https://fitness-server-psi.vercel.app 
+     const {paymentResult} = data;
     if(paymentResult?.insertedId){
       // const { data } = await axiosSecure.put
         Swal.fire({
