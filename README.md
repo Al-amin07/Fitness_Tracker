@@ -1,32 +1,28 @@
 Website Name : Fitness Synced
+Live Link : https://fitness-b8a5d.web.app/
+
+## Features
+- Real-Time Activity Tracking
+- Personalized Progress Reports
+- Goal Setting and Achievement
+
+## Technologies Used
+- React
+- Node js
+- Express js
+- Mongodb
+
+## How to Run Locally
+1. clone git repository
+2. Open in Terminal or VS code
+3. npm install
+4. npm run dev
+
+## Project Overview
+The Fitness Tracker Website is designed to help users manage and improve their fitness journeys by providing comprehensive tools for tracking physical activities and monitoring progress. The platform addresses the need for an easy-to-use, accessible solution for fitness enthusiasts to stay motivated and achieve their health goals. By offering real-time tracking, personalized progress reports, and goal-setting features, this project aims to create a supportive environment where users can maintain their fitness routines and celebrate their accomplishments.
 
 Admin UserName : Alamin_75
 Admin Email : alsujon2001@gmail.com
 Admin Password : Al1234
 
-Live Link : https://fitness-b8a5d.web.app/
-
-Technology Uses : React, Node js, Express js, Mongodb, Tailwind
-
-Website Feature : 
-
-1. Personalized Workout Plans: Customizable workout routines tailored to individual fitness goals and levels, designed by professional trainers.
-
-2. Nutrition Tracking: Comprehensive meal tracking and calorie counting tools, including a vast database of foods and recipes to support healthy eating habits.
-
-3. Progress Monitoring: Detailed progress tracking with visual charts and statistics to monitor improvements in fitness metrics such as weight, BMI, and strength.
-
-4. Virtual Classes: Live and on-demand fitness classes across various disciplines such as yoga, HIIT, pilates, and more, led by certified instructors.
-
-5. Community Support: A vibrant online community where users can share their experiences, join challenges, and motivate each other to stay on track.
-
-6. Integration with Wearables: Seamless syncing with popular fitness trackers and smartwatches to automatically log workouts, heart rate, and other vital stats.
-
-7. Goal Setting and Reminders: Tools to set and track fitness goals with automated reminders and motivational messages to help users stay committed.
-
-8. Expert Advice: Access to a library of articles, videos, and tips from fitness experts and nutritionists covering a wide range of health and wellness topics.
-
-9. Customizable Dashboard: User-friendly interface with a customizable dashboard that allows users to prioritize the information and tools most important to them.
-
-10. Mobile App Availability: A fully-featured mobile app for iOS and Android devices, enabling users to access all website functionalities on the go.
 
